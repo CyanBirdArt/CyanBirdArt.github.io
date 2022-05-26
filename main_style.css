@@ -1,0 +1,26 @@
+html
+.btn-circle.btn-xl {
+    width: 55px;
+    height: 55px;
+    padding: 7px 9px;
+    border-radius: 30px;
+    font-size: 15px;
+    text-align: center;
+}
+@keyframes glowing {
+    0% {
+      background-color: #ffffff;
+      box-shadow: 0 0 3px #adadad;
+    }
+    50% {
+      background-color: #dcc9bc;
+      box-shadow: 0 0 10px #ce641d;
+    }
+    100% {
+      background-color: #ffffff;
+      box-shadow: 0 0 3px #8e8e8e;
+    }
+  }
+#nextRound {
+    animation: glowing 1300ms infinite;
+}

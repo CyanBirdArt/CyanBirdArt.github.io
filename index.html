@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mappy</title>
+    <link rel="stylesheet" href="https://js.arcgis.com/3.40/esri/css/esri.css">
+    <style>
+      html
+      .btn-circle.btn-xl {
+          width: 55px;
+          height: 55px;
+          padding: 7px 9px;
+          border-radius: 30px;
+          font-size: 15px;
+          text-align: center;
+      }
+      @keyframes glowing {
+          0% {
+            background-color: #ffffff;
+            box-shadow: 0 0 3px #adadad;
+          }
+          50% {
+            background-color: #dcc9bc;
+            box-shadow: 0 0 10px #ce641d;
+          }
+          100% {
+            background-color: #ffffff;
+            box-shadow: 0 0 3px #8e8e8e;
+          }
+        }
+      #nextRound {
+          animation: glowing 1300ms infinite;
+      }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</head>
+<body>
+  <main>
+    <div class="container">
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+          <img class="d-block mx-auto mb-4" src="/images/logo_0.1.png" alt="" width="300" height="110">
+        </a>
+  
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal"><svg class="play" width="40" height="40" viewBox="5 5 90 90"><path fill="#ce641d" d="m 49.748902,5.5508588 c -9.71259,0.034922 -19.430344,3.2266016 -27.534753,9.5689262 -4.383887,3.430731 -8.77007,8.521103 -11.472169,13.314434 -10.86245269,19.269239 -5.9807502,43.658673 11.472169,57.316915 6.776193,5.302887 14.87234,8.550846 23.35413,9.368935 15.199907,1.466062 30.16981,-4.972063 39.6105,-17.035653 4.527802,-5.78576 7.609123,-12.663302 8.898681,-19.862352 0.786292,-4.38934 0.792581,-11.150627 0.01447,-15.488978 C 92.105433,31.657246 86.170377,21.855974 77.251617,14.921863 69.168882,8.6377499 59.461491,5.5159364 49.748905,5.5508588 Z m -0.210323,6.0750822 c 4.140499,-0.03673 8.312507,0.599583 12.426114,1.916162 3.064849,0.980919 8.633301,3.856261 11.190531,5.778459 2.98732,2.245489 7.156852,6.617615 9.0873,9.529135 10.26429,15.480678 8.539993,35.544657 -4.192509,48.789785 -3.442779,3.58139 -6.367827,5.74797 -10.592117,7.844999 -4.970499,2.467481 -8.637937,3.546486 -13.955739,4.106728 -15.478267,1.630648 -31.015691,-6.85545 -38.26588,-20.899501 -7.7608079,-15.033148 -5.213601,-32.80697 6.4394,-44.930589 3.273113,-3.405301 6.258769,-5.655696 10.195761,-7.685836 5.632299,-2.904348 11.61564,-4.395666 17.667139,-4.449342 z m 0.853694,9.053195 c -1.722519,-0.0052 -3.519913,0.135835 -4.142382,0.325043 -1.532192,0.465712 -4.068668,2.234021 -4.827096,3.36517 -0.76622,1.142791 -1.008827,3.129428 -0.551389,4.515488 0.72594,2.19961 3.684003,4.318261 6.832142,4.893241 1.811809,0.330901 5.077222,0.08383 6.774262,-0.512631 2.190293,-0.769829 3.951838,-2.173525 4.758367,-3.792016 1.198121,-2.404319 0.692754,-4.509272 -1.557527,-6.490044 -2.005309,-1.765139 -3.675687,-2.29335 -7.286377,-2.304251 z m 9.260417,19.966739 -13.163021,0.03514 c -8.748969,0.02339 -12.453225,0.109527 -11.046354,0.256318 2.72446,0.28425 4.193839,0.840682 4.60592,1.745112 0.5628,1.23521 0.799785,5.804109 0.794784,15.293639 -0.0059,10.75054 -0.247824,15.869216 -0.791683,16.737997 -0.3644,0.58211 -1.813703,1.258879 -3.153813,1.472779 -0.363799,0.05808 5.64886,0.105937 13.361459,0.105937 7.712609,0 13.725257,-0.04784 13.361458,-0.105937 -1.52872,-0.244001 -2.839937,-0.910899 -3.173968,-1.61489 -0.53893,-1.13584 -0.759947,-7.105665 -0.778246,-21.027657 z"><title>PLAY</title></path></svg></a></li>
+        </ul>
+      </header>
+    </div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    </div>
+    <div class="modal-dialog" role="document">
+      <div class="modal-content rounded-6 shadow">
+        <div class="modal-body p-5">
+          <h2 class="fw-bold mb-0">Navigate and click on the map where you think each place is located in the world. 3 new rounds daily!</h2>
+  
+          <ul class="d-grid gap-4 my-5 list-unstyled">
+            <li class="d-flex gap-4">
+              <div>
+                <h5 class="mb-0">The more points the better!</h5>
+                Score as many points as you can in 3 rounds by clicking as close to the place as you can
+              </div>
+            </li>
+            <li class="d-flex gap-4">
+              <div>
+                <h5 class="mb-0">How the points work:</h5>
+                <div class="px-2 py-8 my-8 text-center">
+                    <table class="table table-hover bg-warning">
+                      <thead>
+                      <tr>
+                        <th scope="col">Distance</th>
+                        <th scope="col">Points</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+            
+                      
+                      <tr class="table-light">
+                        <th scope="row">Under 50km</th>
+                        <td>10</td>
+                      </tr>
+                      <tr class="table-light">
+                        <th scope="row">Between 50 and 200km</th>
+                        <td>8</td>
+                      </tr>
+                      <tr class="table-light">
+                        <th scope="row">Between 200 and 500km</th>
+                        <td>6</td>
+                      </tr>
+                      <tr class="table-light">
+                        <th scope="row">Between 500 and 1500km</th>
+                        <td>4</td>
+                      </tr>
+                      <tr class="table-light">
+                        <th scope="row">Between 1500 and 3000km</th>
+                        <td>2</td>
+                      </tr>
+                      <tr class="table-light">
+                        <th scope="row">Over 3000km away :(</th>
+                        <td>0</td>
+                      </tr>
+            
+                      </tbody>
+                    </table>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <button type="button" class="btn btn-lg btn-warning mt-5 w-100" data-bs-dismiss="modal">Great, thanks!</button>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+
+    <!-- Final score Modal -->
+    <div class="modal fade" id="scoreModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+      </div>
+      <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-6 shadow">
+          <div class="modal-body p-5">
+            <h2 class="fw-bold mb-0" id="yourScore"></h2>
+    
+            <ul class="d-grid gap-4 my-5 list-unstyled">
+
+              <li class="d-flex gap-4">
+                <div>
+                  <div class="px-2 py-8 my-8 text-center">
+                      <table class="table table-hover bg-warning">
+                        <thead>
+                        <tr>
+                          <th scope="col">Location</th>
+                          <th scope="col">Distance (km)</th>
+                          <th scope="col">Score</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+              
+                        
+                          <tr class="bg-light">
+                            <td id="place1"></td>
+                            <td id="distanceRound1"></td>
+                            <td id="roundScore1"></td>
+                          </tr>
+                          <tr class="bg-white">
+                            <td id="place2"></td>
+                            <td id="distanceRound2"></td>
+                            <td id="roundScore2"></td>
+                          </tr>
+                          <tr class="table-light">
+                            <td id="place3"></td>
+                            <td id="distanceRound3"></td>
+                            <td id="roundScore3"></td>
+                          </tr>
+              
+                        </tbody>
+                      </table>
+                  </div>
+                  <h2 class="fw-bold mb-0">Your stats...</h2>
+                  <h2 class="fw mb-0" id="highScore"></h2>
+                  <h2 class="fw mb-0" id="averageScore"></h2>
+                </div>
+              </li>
+            </ul>
+            <button type="button" onclick="copyClipboard()" class="btn btn-lg btn-warning mt-5 w-100" id = "copyClip">Copy score to clipboard and share! </button>
+            <button type="button" class="btn btn-lg btn-secondary mt-5 w-100" data-bs-dismiss="modal">Close to explore the map</button>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <button onclick="hello()" type="button" class="btn btn-outline-secondary btn-lg px-4" id = "placeRound"></button>
+        </div>
+    </div>
+
+    <article class="my-3" id="images">
+
+        </div>
+
+        <div>
+          <div class="bd-example" id="mapDiv">
+
+          </div>
+  
+        </div>
+      </article>
+</main>
+</body>
+
+<head>  
+  
+  <script src="https://js.arcgis.com/3.40/"></script>
+  <script src = "mapGame.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
+  
+  
+</head>
+
+</html>
+
+
+
+
+
+
