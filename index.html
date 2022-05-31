@@ -146,17 +146,17 @@
               
                         
                           <tr class="bg-light">
-                            <td id="place1"></td>
+                            <td><a id="place1" href="" target="_blank"></a></td>
                             <td id="distanceRound1"></td>
                             <td id="roundScore1"></td>
                           </tr>
                           <tr class="bg-white">
-                            <td id="place2"></td>
+                            <td><a id="place2" href="" target="_blank"></a></td>
                             <td id="distanceRound2"></td>
                             <td id="roundScore2"></td>
                           </tr>
                           <tr class="table-light">
-                            <td id="place3"></td>
+                            <td><a id="place3" href="" target="_blank"></a></td>
                             <td id="distanceRound3"></td>
                             <td id="roundScore3"></td>
                           </tr>
@@ -177,6 +177,35 @@
       </div>
       </div>
     </div>
+
+        <!-- Final score when already played todays Modal -->
+        <div class="modal fade" id="scoreModalAlready" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+          </div>
+          <div class="modal-dialog" role="document">
+            <div class="modal-content rounded-6 shadow">
+              <div class="modal-body p-5">
+                <h2 class="fw-bold mb-0" id="yourScore"></h2>
+        
+                <ul class="d-grid gap-4 my-5 list-unstyled">
+    
+                  <li class="d-flex gap-4">
+                    <div>
+                      <div class="px-2 py-8 my-8 text-center">
+                      </div>
+                      <h2 class="fw-bold mb-0">Your stats...</h2>
+                      <h2 class="fw mb-0" id="highScoreEnd"></h2>
+                      <h2 class="fw mb-0" id="averageScoreEnd"></h2>
+                    </div>
+                  </li>
+                </ul>
+                <button type="button" onclick="copyClipboard()" class="btn btn-lg btn-warning mt-5 w-100" id = "copyClip">Copy score to clipboard and share! </button>
+                <button type="button" class="btn btn-lg btn-secondary mt-5 w-100" data-bs-dismiss="modal">Close to explore the map</button>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
 
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
           <button onclick="hello()" type="button" class="btn btn-outline-secondary btn-lg px-4" id = "placeRound"></button>
