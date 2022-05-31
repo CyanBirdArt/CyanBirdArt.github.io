@@ -13,7 +13,7 @@ function hasOneDayPassed(){
   // if there's a date in localstorage and it's equal to the above: 
   // inferring a day has yet to pass since both dates are equal.
   if( localStorage.yourapp_date == datecheck ) {
-    alert('has been run before');
+    alert('Welcome back! you have already played Mappin today 🌎');
 
     i = 4
     mappy()
@@ -36,7 +36,6 @@ function runOncePerDay(){
   if( !hasOneDayPassed() ) return false;
 
   // your code below
-  alert('Good morning!');
   i = 0
 
 }
