@@ -1,95 +1,523 @@
-var map, view, graphicsLayer, i, roundScore, roundScore1, roundScore2, roundScore3, totalScore, highScores;
+var map, view, graphicsLayer, i, roundScore, roundScore1, roundScore2, roundScore3, totalScore, highScores, datecheck, currentAvgScore, currentHighscore;
 
 var latitudeGuess, longitudeGuess, mp, pt, pt2, polylineGuess, placeLat, placeLong, symbolGuess, symbolPlace, distParams, distanceResultRounded, extentMap, xMaxExtent, xMinExtent, yMaxExtent, yMinExtent
 
 var xMinExtent1, xMinExtent2, yMinExtent1, yMinExtent2, xMaxExtent1, xMaxExtent2, yMaxExtent1, yMaxExtent2, guess1pt, guess2pt, place1pt, place2pt, jsonConst
 
-i = 0
 
-console.log("today's date:")
+// checks if one day has passed. 
+function hasOneDayPassed(){
+  // get today's date. eg: "7/37/2007"
+  datecheck = new Date().toLocaleDateString();
+
+  // if there's a date in localstorage and it's equal to the above: 
+  // inferring a day has yet to pass since both dates are equal.
+  if( localStorage.yourapp_date == datecheck ) {
+    alert('has been run before');
+
+    i = 4
+    mappy()
+        return false;
+
+  }
+
+  // PUT IN LOGIC HERE FOR IF GAME HAS ALREADY BEEN PLAYED ON THIS DAY
+
+
+  // this portion of logic occurs when a day has passed
+
+  return true;
+  
+}
+
+
+// some function which should run once a day
+function runOncePerDay(){
+  if( !hasOneDayPassed() ) return false;
+
+  // your code below
+  alert('Good morning!');
+  i = 0
+
+}
+
+
+runOncePerDay(); // run the code
+
 let today = new Date()
 var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 date = String(date)
 console.log(date)
 
- /*  
-//use dojo from Andrews example
+// List of places for each day
 
-require(['dojo/json', "dojo/text!./places.json"], function(JSON, places) {
-  let jsonConst = JSON.parse(places);
-  console.log(jsonConst.placesJSON.length);
-  return jsonConst
-}
-)
-*/
 if (date == "2022-5-22") {
-  console.log("Date is working")
-  jsonConst = [
-    {
-        "round": "1",
-        "place": "New York",
-        "placeLatitude": "40.7128",
-        "placeLongitude": "-74.0060"
-        
-    },
-    {
-        "round": "2",
-        "place": "Zagreb",
-        "placeLatitude": "45.8150",
-        "placeLongitude": "15.9819"
-    },
-    {
-        "round": "3",
-        "place": "Santiago",
-        "placeLatitude": "-33.4489",
-        "placeLongitude": "-70.6693"
-    }
-  ]
-} else if (date ==="2022-5-23") {
-  jsonConst = [
-      {
-          "round": "1",
-          "place": "Edinburgh",
-          "placeLatitude": "55.9533",
-          "placeLongitude": "-3.1883"
-          
-      },
-      {
-          "round": "2",
-          "place": "Mexico City",
-          "placeLatitude": "19.4326",
-          "placeLongitude": "-99.1332"
-      },
-      {
-          "round": "3",
-          "place": "Marrakesh",
-          "placeLatitude": "31.6295",
-          "placeLongitude": "-7.9811"
-      }
-  ]} 
-  else if (date ==="2022-5-24") {
-  jsonConst = [
-      {
-          "round": "1",
-          "place": "Paris",
-          "placeLatitude": "48.8566",
-          "placeLongitude": "2.3522"
-          
-      },
-      {
-          "round": "2",
-          "place": "Beijing",
-          "placeLatitude": "39.9042",
-          "placeLongitude": "116.4074"
-      },
-      {
-          "round": "3",
-          "place": "Havana",
-          "placeLatitude": "23.1136",
-          "placeLongitude": "-82.3666"
-      }
-  ]} else {
+    console.log("Date is working")
     jsonConst = [
+      {
+          "round": "1",
+          "place": "New York",
+          "placeLatitude": "40.7128",
+          "placeLongitude": "-74.0060"
+          
+      },
+      {
+          "round": "2",
+          "place": "Zagreb",
+          "placeLatitude": "45.8150",
+          "placeLongitude": "15.9819"
+      },
+      {
+          "round": "3",
+          "place": "Santiago",
+          "placeLatitude": "-33.4489",
+          "placeLongitude": "-70.6693"
+      }
+    ]
+  } else if (date ==="2022-5-23") {
+    jsonConst = [
+        {
+            "round": "1",
+            "place": "Edinburgh",
+            "placeLatitude": "55.9533",
+            "placeLongitude": "-3.1883"
+            
+        },
+        {
+            "round": "2",
+            "place": "Mexico City",
+            "placeLatitude": "19.4326",
+            "placeLongitude": "-99.1332"
+        },
+        {
+            "round": "3",
+            "place": "Marrakesh",
+            "placeLatitude": "31.6295",
+            "placeLongitude": "-7.9811"
+        }
+    ]} 
+    else if (date ==="2022-5-24") {
+    jsonConst = [
+        {
+            "round": "1",
+            "place": "Paris",
+            "placeLatitude": "48.8566",
+            "placeLongitude": "2.3522"
+            
+        },
+        {
+            "round": "2",
+            "place": "Beijing",
+            "placeLatitude": "39.9042",
+            "placeLongitude": "116.4074"
+        },
+        {
+            "round": "3",
+            "place": "Havana",
+            "placeLatitude": "23.1136",
+            "placeLongitude": "-82.3666"
+        }
+    ]} else if (date ==="2022-5-25") {
+  jsonConst = [
+      {
+          "round": "1",
+          "place": "Seoul",
+          "placeLatitude": "37.5665",
+          "placeLongitude": "126.9780"
+          
+      },
+      {
+          "round": "2",
+          "place": "Los Angeles",
+          "placeLatitude": "34.0522",
+          "placeLongitude": "-118.2437"
+      },
+      {
+          "round": "3",
+          "place": "Antananarivo",
+          "placeLatitude": "-18.8792",
+          "placeLongitude": "47.5079"
+      }
+  ]} else if (date ==="2022-5-26") {
+  jsonConst = [
+      {
+          "round": "1",
+          "place": "Venice",
+          "placeLatitude": "45.4408",
+          "placeLongitude": "12.3155"
+          
+      },
+      {
+          "round": "2",
+          "place": "Reykjavík",
+          "placeLatitude": "64.1466",
+          "placeLongitude": "-21.9426"
+      },
+      {
+          "round": "3",
+          "place": "Paramaribo",
+          "placeLatitude": "5.8520",
+          "placeLongitude": "-55.2038"
+      }
+  ]} else if (date ==="2022-5-27") {
+  jsonConst = [
+      {
+          "round": "1",
+          "place": "Luxembourg City",
+          "placeLatitude": "49.6116",
+          "placeLongitude": "6.1319"
+          
+      },
+      {
+          "round": "2",
+          "place": "Cape Town",
+          "placeLatitude": "-33.9249",
+          "placeLongitude": "18.4241"
+      },
+      {
+          "round": "3",
+          "place": "Okayama",
+          "placeLatitude": "34.6555",
+          "placeLongitude": "133.9198"
+      }
+  ]} else if (date ==="2022-5-28") {
+  jsonConst = [
+      {
+          "round": "1",
+          "place": "Osaka",
+          "placeLatitude": "34.6937",
+          "placeLongitude": "135.5023"
+          
+      },
+      {
+          "round": "2",
+          "place": "Auckland",
+          "placeLatitude": "-36.8509",
+          "placeLongitude": "174.7645"
+      },
+      {
+          "round": "3",
+          "place": "Kaohsiung City",
+          "placeLatitude": "22.6273",
+          "placeLongitude": "120.3014"
+      }
+  ]} else if (date ==="2022-5-29") {
+  jsonConst = [
+      {
+          "round": "1",
+          "place": "Barcelona",
+          "placeLatitude": "41.3874",
+          "placeLongitude": "2.1686"
+          
+      },
+      {
+          "round": "2",
+          "place": "Louisville",
+          "placeLatitude": "38.2527",
+          "placeLongitude": "-85.7585"
+      },
+      {
+          "round": "3",
+          "place": "Tripoli",
+          "placeLatitude": "32.8872",
+          "placeLongitude": "13.1913"
+      }
+  ]} else if (date ==="2022-5-30") {
+  jsonConst = [
+      {
+          "round": "1",
+          "place": "Vancouver",
+          "placeLatitude": "49.2827",
+          "placeLongitude": "-123.1207"
+          
+      },
+      {
+          "round": "2",
+          "place": "Ho Chi Minh City",
+          "placeLatitude": "10.8231",
+          "placeLongitude": "106.6297"
+      },
+      {
+          "round": "3",
+          "place": "Ashgabat",
+          "placeLatitude": "37.9601",
+          "placeLongitude": "58.3261"
+      }
+  ]} else if (date ==="2022-5-31") {
+  jsonConst = [
+      {
+          "round": "1",
+          "place": "Melbourne",
+          "placeLatitude": "-37.8136",
+          "placeLongitude": "144.9631"
+          
+      },
+      {
+          "round": "2",
+          "place": "Strasbourg",
+          "placeLatitude": "48.5734",
+          "placeLongitude": "7.7521"
+      },
+      {
+          "round": "3",
+          "place": "Chișinău",
+          "placeLatitude": "47.0105",
+          "placeLongitude": "28.8638"
+      }
+  ]} else if (date ==="2022-6-1") {
+  jsonConst = [
+      {
+          "round": "1",
+          "place": "Rio de Janeiro",
+          "placeLatitude": "-22.9068",
+          "placeLongitude": "-43.1729"
+          
+      },
+      {
+          "round": "2",
+          "place": "Gloucester",
+          "placeLatitude": "51.8642",
+          "placeLongitude": "-2.2382"
+      },
+      {
+          "round": "3",
+          "place": "Santa Cruz de la Sierra",
+          "placeLatitude": "-17.8146",
+          "placeLongitude": "-63.1561"
+      }
+  ]} else if (date ==="2022-6-2") {
+  jsonConst = [
+      {
+          "round": "1",
+          "place": "Belfast",
+          "placeLatitude": "54.5973",
+          "placeLongitude": "-5.9301"
+          
+      },
+      {
+          "round": "2",
+          "place": "Charlotte",
+          "placeLatitude": "35.2271",
+          "placeLongitude": "-80.8431"
+      },
+      {
+          "round": "3",
+          "place": "Nuuk",
+          "placeLatitude": "64.1814",
+          "placeLongitude": "-51.6941"
+      }
+  ]} else if (date ==="2022-6-3") {
+  jsonConst = [
+      {
+          "round": "1",
+          "place": "Adelaide",
+          "placeLatitude": "-34.9285",
+          "placeLongitude": "138.6007"
+          
+      },
+      {
+          "round": "2",
+          "place": "Bologna",
+          "placeLatitude": "44.4949",
+          "placeLongitude": "11.3426"
+      },
+      {
+          "round": "3",
+          "place": "Nadi",
+          "placeLatitude": "-17.7765",
+          "placeLongitude": "177.4356"
+      }
+  ]} else if (date ==="2022-6-4") {
+  jsonConst = [
+      {
+          "round": "1",
+          "place": "Jakarta",
+          "placeLatitude": "-6.2088",
+          "placeLongitude": "106.8456"
+          
+      },
+      {
+          "round": "2",
+          "place": "Berlin",
+          "placeLatitude": "52.5200",
+          "placeLongitude": "13.4050"
+      },
+      {
+          "round": "3",
+          "place": "Saskatoon",
+          "placeLatitude": "52.1579",
+          "placeLongitude": "-106.6702"
+      }
+  ]} else if (date ==="2022-6-5") {
+  jsonConst = [
+      {
+          "round": "1",
+          "place": "Lisbon",
+          "placeLatitude": "38.7223",
+          "placeLongitude": "-9.1393"
+          
+      },
+      {
+          "round": "2",
+          "place": "Dubai",
+          "placeLatitude": "25.2048",
+          "placeLongitude": "55.2708"
+      },
+      {
+          "round": "3",
+          "place": "Abidjan",
+          "placeLatitude": "5.3600",
+          "placeLongitude": "-4.0083"
+      }
+  ]} else if (date ==="2022-6-6") {
+  jsonConst = [
+      {
+          "round": "1",
+          "place": "Seattle",
+          "placeLatitude": "47.6062",
+          "placeLongitude": "-122.3321"
+          
+      },
+      {
+          "round": "2",
+          "place": "Naples",
+          "placeLatitude": "40.8518",
+          "placeLongitude": "14.2681"
+      },
+      {
+          "round": "3",
+          "place": "Chișinău",
+          "placeLatitude": "47.0105",
+          "placeLongitude": "28.8638"
+      }
+  ]} else if (date ==="2022-6-7") {
+  jsonConst = [
+      {
+          "round": "1",
+          "place": "Mumbai",
+          "placeLatitude": "19.0760",
+          "placeLongitude": "72.8777"
+          
+      },
+      {
+          "round": "2",
+          "place": "Wellington",
+          "placeLatitude": "-41.2924",
+          "placeLongitude": "174.7787"
+      },
+      {
+          "round": "3",
+          "place": "Bogotá",
+          "placeLatitude": "4.7110",
+          "placeLongitude": "-74.0721"
+      }
+  ]} else if (date ==="2022-6-8") {
+  jsonConst = [
+      {
+          "round": "1",
+          "place": "Copenhagen",
+          "placeLatitude": "55.6761",
+          "placeLongitude": "12.5683"
+          
+      },
+      {
+          "round": "2",
+          "place": "Kathmandu",
+          "placeLatitude": "27.7172",
+          "placeLongitude": "85.3240"
+      },
+      {
+          "round": "3",
+          "place": "Kampala",
+          "placeLatitude": "0.3476",
+          "placeLongitude": "32.5825"
+      }
+  ]} else if (date ==="2022-6-9") {
+  jsonConst = [
+      {
+          "round": "1",
+          "place": "Houston",
+          "placeLatitude": "29.7604",
+          "placeLongitude": "-95.3698"
+          
+      },
+      {
+          "round": "2",
+          "place": "Lagos",
+          "placeLatitude": "6.5244",
+          "placeLongitude": "3.3792"
+      },
+      {
+          "round": "3",
+          "place": "Batumi",
+          "placeLatitude": "41.6168",
+          "placeLongitude": "41.6367"
+      }
+  ]} else if (date ==="2022-6-10") {
+  jsonConst = [
+      {
+          "round": "1",
+          "place": "Helsinki",
+          "placeLatitude": "60.1699",
+          "placeLongitude": "24.9384"
+          
+      },
+      {
+          "round": "2",
+          "place": "Dhaka",
+          "placeLatitude": "23.8103",
+          "placeLongitude": "90.4125"
+      },
+      {
+          "round": "3",
+          "place": "Mecca",
+          "placeLatitude": "21.3891",
+          "placeLongitude": "39.8579"
+      }
+  ]} else if (date ==="2022-6-11") {
+  jsonConst = [
+      {
+          "round": "1",
+          "place": "Athens",
+          "placeLatitude": "37.9838",
+          "placeLongitude": "23.7275"
+          
+      },
+      {
+          "round": "2",
+          "place": "Perth",
+          "placeLatitude": "-31.9523",
+          "placeLongitude": "115.8613"
+      },
+      {
+          "round": "3",
+          "place": "Zhangzhou",
+          "placeLatitude": "24.5135",
+          "placeLongitude": "117.6472"
+      }
+  ]} else if (date ==="2022-6-12") {
+  jsonConst = [
+      {
+          "round": "1",
+          "place": "Prague",
+          "placeLatitude": "50.0755",
+          "placeLongitude": "14.4378"
+          
+      },
+      {
+          "round": "2",
+          "place": "Kyoto",
+          "placeLatitude": "35.0116",
+          "placeLongitude": "135.7681"
+      },
+      {
+          "round": "3",
+          "place": "Casablanca",
+          "placeLatitude": "33.5731",
+          "placeLongitude": "-7.5898"
+      }
+  ]} else if (date ==="2022-6-13") {
+  jsonConst = [
       {
           "round": "1",
           "place": "Detroit",
@@ -109,21 +537,32 @@ if (date == "2022-5-22") {
           "placeLatitude": "64.1829",
           "placeLongitude": "-15.8720"
       }
-  ]
-  }
-
+  ]}
 
 
 
 document.getElementById("placeRound").innerHTML = "Round 1  of 3: Guess the location of " + jsonConst[0].place
-const  place1 = jsonConst[0].place
+
+// Get place names for each round and put them into a google URL
+const  place1 = jsonConst[0].place;
+const place1Plus = place1.replaceAll(' ', '+');
+const place1URL = "https://www.google.com/search?q=" + place1Plus
+
 const  place2 = jsonConst[1].place
+const place2Plus = place2.replaceAll(' ', '+');
+const place2URL = "https://www.google.com/search?q=" + place2Plus
+
 const  place3 = jsonConst[2].place
+const place3Plus = place3.replaceAll(' ', '+');
+const place3URL = "https://www.google.com/search?q=" + place3Plus
 
 document.getElementById("place1").innerHTML = place1
 document.getElementById("place2").innerHTML = place2
 document.getElementById("place3").innerHTML = place3
 
+document.getElementById("place1").setAttribute("href", place1URL)
+document.getElementById("place2").setAttribute("href", place2URL)
+document.getElementById("place3").setAttribute("href", place3URL)
 
 // defining function which is the engine to run a round in mappyGame
 function mappy() { 
@@ -181,6 +620,62 @@ function mappy() {
         symbolPlace.setColor(new dojo.Color(initColor));
         symbolPlace.setSize("20");
 
+
+        if (i === 4) {
+            // Find data from localStorage
+            var dateScoreList = [];
+            var dateScore = {
+                'totalScore': totalScore,
+                'date': date
+            };
+        
+            dateScoreList = dateScoreList.concat(JSON.parse(localStorage.getItem('dateScoreList')||'[]'));
+            console.log(dateScoreList);
+        
+            localStorage.setItem("showList", JSON.stringify(dateScoreList));
+            localStorage.yourapp_date = datecheck;
+        
+            const NO_OF_HIGH_SCORES = 1000;
+            const HIGH_SCORES = 'highScores';
+            const highScoreString = localStorage.getItem(HIGH_SCORES);
+            highScores = JSON.parse(highScoreString) ?? [];
+            highScores = JSON.parse(localStorage.getItem(HIGH_SCORES)) ?? []
+            const newScore = { totalScore};
+            
+             // 2. Sort the list
+             highScores.sort((a, b) => b.totalScore- a.totalScore);
+            
+             // 3. Select new list
+             highScores.splice(NO_OF_HIGH_SCORES);
+            
+             // 4. Save to local storage
+             localStorage.setItem(HIGH_SCORES, JSON.stringify(highScores));
+             localStorage.setItem('date',JSON.stringify(date));
+             console.log("Test local storage")
+             console.log(highScores)
+            
+             const findAverageScore = (arr) => {
+               const { length } = arr;
+               return arr.reduce((acc, val) => {
+                  return acc + (val.totalScore/length);
+               }, 0); 
+            
+            };
+        
+          var roundedAverage = Math.round(findAverageScore(highScores) * 10) / 10
+
+            // If they have already played today then this will come up
+            
+            document.getElementById("placeRound").innerHTML = "Click to see and share your score"
+
+            document.getElementById("highScoreEnd").innerHTML =    "Highscore:     " + highScores[0].totalScore;
+            document.getElementById("averageScoreEnd").innerHTML = "Average score: " + roundedAverage;
+
+            $('#scoreModalAlready').modal('show');
+
+            //add the points on the map for them to see?
+            
+        }
         
       //when the map is clicked create a buffer around the click point of the specified distance.
        
@@ -402,7 +897,9 @@ mappy()
 
 
 function hello() {
-  if (document.getElementById("nextRound").innerHTML === "Click here for next round"){
+  if (i === 3) {
+      document.getElementById("placeRound").innerHTML.onclick = $('#scoreModal').modal('show');
+  } else if (document.getElementById("nextRound").innerHTML === "Click here for next round"){
       map.graphics.clear();
       map.infoWindow.hide();
       document.getElementById('mapDiv').style.pointerEvents = 'auto';
@@ -414,7 +911,6 @@ function hello() {
       return 
   } else {}
 
-
 }   
 
 function copyClipboard(){
@@ -424,13 +920,27 @@ function copyClipboard(){
   document.getElementById("copyClip").innerHTML = "Copied to clipboard, paste to share!"
 }
 
-function saveHighScore(totalScore, highScores) {
-  const NO_OF_HIGH_SCORES = 10;
-  const HIGH_SCORES = 'highScores';
-  const highScoreString = localStorage.getItem(HIGH_SCORES);
-  highScores = JSON.parse(highScoreString) ?? [];
-  highScores = JSON.parse(localStorage.getItem(HIGH_SCORES)) ?? []
-  const newScore = { totalScore};
+function saveHighScore(totalScore, highScores, date) {
+
+    var dateScoreList = [];
+    var dateScore = {
+        'totalScore': totalScore,
+        'date': date
+    };
+
+    dateScoreList.push(dateScore);
+    dateScoreList = dateScoreList.concat(JSON.parse(localStorage.getItem('dateScoreList')||'[]'));
+    console.log(dateScoreList);
+
+    localStorage.setItem("showList", JSON.stringify(dateScoreList));
+    localStorage.yourapp_date = datecheck;
+
+    const NO_OF_HIGH_SCORES = 1000;
+    const HIGH_SCORES = 'highScores';
+    const highScoreString = localStorage.getItem(HIGH_SCORES);
+    highScores = JSON.parse(highScoreString) ?? [];
+    highScores = JSON.parse(localStorage.getItem(HIGH_SCORES)) ?? []
+    const newScore = { totalScore};
   
   // 1. Add to list
   highScores.push(newScore);
@@ -443,6 +953,7 @@ function saveHighScore(totalScore, highScores) {
   
   // 4. Save to local storage
   localStorage.setItem(HIGH_SCORES, JSON.stringify(highScores));
+  localStorage.setItem('date',JSON.stringify(date));
   console.log("Test local storage")
   console.log(highScores)
 
@@ -450,13 +961,16 @@ function saveHighScore(totalScore, highScores) {
     const { length } = arr;
     return arr.reduce((acc, val) => {
        return acc + (val.totalScore/length);
-    }, 0);
+    }, 0); 
+
  };
 
   var roundedAverage = Math.round(findAverageScore(highScores) * 10) / 10
 
   document.getElementById("highScore").innerHTML =    "Highscore:     " + highScores[0].totalScore;
+  currentHighscore = highScores[0].totalScore;
   document.getElementById("averageScore").innerHTML = "Average score: " + roundedAverage;
+  currentAvgScore = roundedAverage;
 };
 
 
