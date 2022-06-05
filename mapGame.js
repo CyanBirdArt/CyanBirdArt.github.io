@@ -770,10 +770,6 @@ function mappy() {
             document.getElementById("placeRound").id = "nextRound";
             i = i +1
           } else if (i === 2){
-            document.getElementById("placeRound").innerHTML = roundScore3 + " points! Click here for next round"
-            document.getElementById("placeRound").id = "nextRound";
-            i = i +1
-          } else {
             i = i +1
             document.getElementById("yourScore").innerHTML = "Your score today: " + totalScore+ "/30 points!"
             let arrayMessage = []
@@ -960,14 +956,14 @@ function hello() { console.log(i)
   } else if (i === 4) {
     // To show modal when button is clicked if already played today
     document.getElementById("placeRound").innerHTML.onclick = $('#scoreModalAlready').modal('show');
-} else if (document.getElementById("placeRound").id === "nextRound"){
+} else if (document.getElementById("nextRound").id === "nextRound" && 1 < 3){
       map.graphics.clear();
       map.infoWindow.hide();
       document.getElementById('mapDiv').style.pointerEvents = 'auto';
       //view.graphics.removeAll();
       document.getElementById("nextRound").id = "placeRound";
       document.getElementById("placeRound").innerHTML = "Round "+ (i+1) +" of 3: Guess the location of " + jsonConst[i].place
-      onClick()
+      //onClick()
 
       return 
   }
