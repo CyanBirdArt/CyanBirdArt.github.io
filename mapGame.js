@@ -791,7 +791,7 @@ function mappy() {
             } else {
               arrayMessage = ["Congratulations, you" ]
             }
-            document.getElementById("placeRound").innerHTML = getRandom(arrayMessage) + " scored " + totalScore+ "/30 points!"
+            document.getElementById("placeRound").innerHTML = getRandom(arrayMessage) + " scored " + totalScore+ "/30 points! Click for score breakdown"
             $('#scoreModal').modal('show');
           }
           document.getElementById('mapDiv').style.pointerEvents = 'none';
@@ -965,7 +965,7 @@ function hello() {
 
 function copyClipboard(){
   // to Copy score to clipboard and url to mappin-game.com to share 
-  let urlMappin = new URL('https://www.mappin-game.com/');
+  let urlMappin = new URL('https://mappin-game.com/');
   navigator.clipboard.writeText("I scored " + totalScore + " points on Mappin! 🌎 Can you beat my daily score? " + urlMappin)
   document.getElementById("copyClip").innerHTML = "Copied to clipboard, paste to share!"
 }
