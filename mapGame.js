@@ -570,14 +570,14 @@ function mappy() {
     "esri/map", "esri/geometry/webMercatorUtils", "esri/geometry/Extent",
     "esri/tasks/GeometryService","esri/tasks/DistanceParameters",
     "esri/geometry/Point", "esri/geometry/Polyline", 
-    "esri/dijit/Scalebar",
+    "esri/dijit/Scalebar", "esri/dijit/InfoWindow",
     "esri/graphic", "esri/InfoTemplate", "esri/symbols/SimpleMarkerSymbol",
     "esri/symbols/SimpleLineSymbol", "esri/Color", "dojo/dom", "dojo/domReady!"
   ], function(
     Map, webMercatorUtils, Extent,
     GeometryService, DistanceParameters,
     Point, Polyline,
-    Scalebar,
+    Scalebar, InfoWindow,
     Graphic, InfoTemplate, SimpleMarkerSymbol,
     SimpleLineSymbol, Color, dom
   ) {
@@ -725,7 +725,7 @@ function mappy() {
             var xCentre = (Number(jsonConst[i].placeLongitude) + Number(longitudeGuess)) / 2;
             var yCentre = (Number(jsonConst[i].placeLatitude) + Number(latitudeGuess)) / 2;
             var centreOfLine = new Point(xCentre, yCentre);
-            map.infoWindow.show(centreOfLine);
+            map.infoWindow.show(centreOfLine, InfoWindow.ANCHOR_UPPERLEFT);
           }
           else if (i === 2){
 
@@ -761,10 +761,18 @@ function mappy() {
             saveHighScore(totalScore, highScores)
           } else {};
 
-          if (i<2){
-            document.getElementById("placeRound").innerHTML = "Click here for next round"
+          if (i === 0){
+            document.getElementById("placeRound").innerHTML = roundScore1 + " points! Click here for next round"
             document.getElementById("placeRound").id = "nextRound";
-              i = i +1
+            i = i +1
+          } else if (i === 1){
+            document.getElementById("placeRound").innerHTML = roundScore2 + " points! Click here for next round"
+            document.getElementById("placeRound").id = "nextRound";
+            i = i +1
+          } else if (i === 2){
+            document.getElementById("placeRound").innerHTML = roundScore3 + " points! Click here for next round"
+            document.getElementById("placeRound").id = "nextRound";
+            i = i +1
           } else {
             i = i +1
             document.getElementById("yourScore").innerHTML = "Your score today: " + totalScore+ "/30 points!"
@@ -882,7 +890,7 @@ function mappy() {
 
 
         map.on("click", function(evt, mp){ 
-          if (document.getElementById("placeRound").innerHTML === "Click here for next round"){
+          if (document.getElementById("placeRound").id === "nextRound"){
           }else if (i < 3){
             map.infoWindow.setTitle("Are you sure?");
             let btn = document.createElement("button")
@@ -946,10 +954,13 @@ mappy()
 
 
 
-function hello() {
+function hello() { console.log(i)
   if (i === 3) {
       document.getElementById("placeRound").innerHTML.onclick = $('#scoreModal').modal('show');
-  } else if (document.getElementById("nextRound").innerHTML === "Click here for next round"){
+  } else if (i === 4) {
+    // To show modal when button is clicked if already played today
+    document.getElementById("placeRound").innerHTML.onclick = $('#scoreModalAlready').modal('show');
+} else if (document.getElementById("placeRound").id === "nextRound"){
       map.graphics.clear();
       map.infoWindow.hide();
       document.getElementById('mapDiv').style.pointerEvents = 'auto';
@@ -959,8 +970,7 @@ function hello() {
       onClick()
 
       return 
-  } else {}
-
+  }
 }   
 
 function copyClipboard(){
@@ -1022,5 +1032,7 @@ function saveHighScore(totalScore, highScores, date) {
   document.getElementById("averageScore").innerHTML = "Average score: " + roundedAverage;
   currentAvgScore = roundedAverage;
 };
+
+
 
 
