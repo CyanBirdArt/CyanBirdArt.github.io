@@ -537,7 +537,366 @@ if (date == "2022-5-22") {
           "placeLatitude": "64.1829",
           "placeLongitude": "-15.8720"
       }
-  ]}
+  ]} else if (date ==="2022-6-14") {
+    jsonConst = [
+        {
+            "round": "1",
+            "place": "Brisbane",
+            "placeLatitude": "-27.4705",
+            "placeLongitude": "153.0260"
+            
+        },
+        {
+            "round": "2",
+            "place": "Lyon",
+            "placeLatitude": "45.7640",
+            "placeLongitude": "4.8357"
+        },
+        {
+            "round": "3",
+            "place": "Santa Cruz de la Sierra",
+            "placeLatitude": "-17.8146",
+            "placeLongitude": "-63.1561"
+        }
+    ]} else if (date ==="2022-6-15") {
+        jsonConst = [
+            {
+                "round": "1",
+                "place": "Singapore",
+                "placeLatitude": "1.3521",
+                "placeLongitude": "103.8198"
+                
+            },
+            {
+                "round": "2",
+                "place": "Valencia",
+                "placeLatitude": "39.4699",
+                "placeLongitude": "-0.3763"
+            },
+            {
+                "round": "3",
+                "place": "Mérida",
+                "placeLatitude": "38.9394",
+                "placeLongitude": "-6.3652"
+            }
+        ]} else if (date ==="2022-6-16") {
+            jsonConst = [
+                {
+                    "round": "1",
+                    "place": "Chicago",
+                    "placeLatitude": "41.8781",
+                    "placeLongitude": "-87.6298"
+                    
+                },
+                {
+                    "round": "2",
+                    "place": "Jerusalem",
+                    "placeLatitude": "31.7683",
+                    "placeLongitude": "35.2137"
+                },
+                {
+                    "round": "3",
+                    "place": "Guadalajara",
+                    "placeLatitude": "20.6597",
+                    "placeLongitude": "-103.3496"
+                }
+            ]} else if (date ==="2022-6-17") {
+                jsonConst = [
+                    {
+                        "round": "1",
+                        "place": "Stockholm",
+                        "placeLatitude": "59.3293",
+                        "placeLongitude": "18.0686"
+                        
+                    },
+                    {
+                        "round": "2",
+                        "place": "Istanbul",
+                        "placeLatitude": "41.0082",
+                        "placeLongitude": "28.9784"
+                    },
+                    {
+                        "round": "3",
+                        "place": "Khartoum",
+                        "placeLatitude": "15.5007",
+                        "placeLongitude": "32.5599"
+                    }
+                ]} else if (date ==="2022-6-18") {
+                jsonConst = [
+                    {
+                        "round": "1",
+                        "place": "Hong Kong",
+                        "placeLatitude": "22.3193",
+                        "placeLongitude": "114.1694"
+                        
+                    },
+                    {
+                        "round": "2",
+                        "place": "Quebec City",
+                        "placeLatitude": "46.8139",
+                        "placeLongitude": "-71.2080"
+                    },
+                    {
+                        "round": "3",
+                        "place": "Riau Islands",
+                        "placeLatitude": "3.9457",
+                        "placeLongitude": "108.1429"
+                    }
+                ]} else if (date ==="2022-6-19") {
+                    jsonConst = [
+                        {
+                            "round": "1",
+                            "place": "Bucharest",
+                            "placeLatitude": "44.4268",
+                            "placeLongitude": "26.1025"
+                            
+                        },
+                        {
+                            "round": "2",
+                            "place": "Hanoi",
+                            "placeLatitude": "21.0278",
+                            "placeLongitude": "105.8342"
+                        },
+                        {
+                            "round": "3",
+                            "place": "Luanda",
+                            "placeLatitude": "-8.8147",
+                            "placeLongitude": "13.2302"
+                        }
+                    ]} else if (date ==="2022-6-20") {
+                        jsonConst = [
+                            {
+                                "round": "1",
+                                "place": "Rotterdam",
+                                "placeLatitude": "51.9244",
+                                "placeLongitude": "4.4777"
+                                
+                            },
+                            {
+                                "round": "2",
+                                "place": "Guayaquil",
+                                "placeLatitude": "-2.1894",
+                                "placeLongitude": "-79.8891"
+                            },
+                            {
+                                "round": "3",
+                                "place": "Port Moresby",
+                                "placeLatitude": "-9.4438",
+                                "placeLongitude": "147.1803"
+                            }
+                        ]} else if (date ==="2022-6-21") {
+                            jsonConst = [
+                                {
+                                    "round": "1",
+                                    "place": "São Paulo",
+                                    "placeLatitude": "-23.5558",
+                                    "placeLongitude": "-46.6396"
+                                    
+                                },
+                                {
+                                    "round": "2",
+                                    "place": "Honolulu",
+                                    "placeLatitude": "21.3099",
+                                    "placeLongitude": "-157.8581"
+                                },
+                                {
+                                    "round": "3",
+                                    "place": "Lerwick",
+                                    "placeLatitude": "60.1530",
+                                    "placeLongitude": "-1.1493"
+                                }
+                            ]} else if (date ==="2022-6-22") {
+                                jsonConst = [
+                                    {
+                                        "round": "1",
+                                        "place": "Denver",
+                                        "placeLatitude": "39.7392",
+                                        "placeLongitude": "-104.9903"
+                                        
+                                    },
+                                    {
+                                        "round": "2",
+                                        "place": "Manilla",
+                                        "placeLatitude": "14.5995",
+                                        "placeLongitude": "120.9842"
+                                    },
+                                    {
+                                        "round": "3",
+                                        "place": "Arctic Bay",
+                                        "placeLatitude": "73.0376",
+                                        "placeLongitude": "-85.1480"
+                                    }
+                                ]} 
+                                else if (date ==="2022-6-23") {
+                                jsonConst = [
+                                    {
+                                        "round": "1",
+                                        "place": "Faroe Islands",
+                                        "placeLatitude": "61.8926",
+                                        "placeLongitude": "-6.9118"
+                                        
+                                    },
+                                    {
+                                        "round": "2",
+                                        "place": "Kuwait City",
+                                        "placeLatitude": "29.3759",
+                                        "placeLongitude": "47.9774"
+                                    },
+                                    {
+                                        "round": "3",
+                                        "place": "Islamabad",
+                                        "placeLatitude": "33.6844",
+                                        "placeLongitude": "73.0479"
+                                    }
+                                ]}else if (date ==="2022-6-24") {
+                                    jsonConst = [
+                                        {
+                                            "round": "1",
+                                            "place": "Hamburg",
+                                            "placeLatitude": "53.5511",
+                                            "placeLongitude": "9.9937"
+                                            
+                                        },
+                                        {
+                                            "round": "2",
+                                            "place": "Bratislava",
+                                            "placeLatitude": "48.1486",
+                                            "placeLongitude": "17.1077"
+                                        },
+                                        {
+                                            "round": "3",
+                                            "place": "Luanda",
+                                            "placeLatitude": "-8.8147",
+                                            "placeLongitude": "13.2302"
+                                        }
+                                    ]}else if (date ==="2022-6-25") {
+                                        jsonConst = [
+                                            {
+                                                "round": "1",
+                                                "place": "Salt Lake City",
+                                                "placeLatitude": "40.7608",
+                                                "placeLongitude": "-111.8910"
+                                                
+                                            },
+                                            {
+                                                "round": "2",
+                                                "place": "Santo Domingo",
+                                                "placeLatitude": "18.4861",
+                                                "placeLongitude": "-69.9312"
+                                            },
+                                            {
+                                                "round": "3",
+                                                "place": "Mandalay",
+                                                "placeLatitude": "21.9588",
+                                                "placeLongitude": "96.0891"
+                                            }
+                                        ]}else if (date ==="2022-6-26") {
+                                            jsonConst = [
+                                                {
+                                                    "round": "1",
+                                                    "place": "Antwerp",
+                                                    "placeLatitude": "51.2213",
+                                                    "placeLongitude": "4.4051"
+                                                    
+                                                },
+                                                {
+                                                    "round": "2",
+                                                    "place": "Kolkata",
+                                                    "placeLatitude": "22.5726",
+                                                    "placeLongitude": "88.3639"
+                                                },
+                                                {
+                                                    "round": "3",
+                                                    "place": "Mbabane",
+                                                    "placeLatitude": "-26.3054",
+                                                    "placeLongitude": "31.1367"
+                                                }
+                                            ]} else if (date ==="2022-6-27") {
+                                                jsonConst = [
+                                                    {
+                                                        "round": "1",
+                                                        "place": "Minneapolis",
+                                                        "placeLatitude": "44.9778",
+                                                        "placeLongitude": "-93.2650"
+                                                        
+                                                    },
+                                                    {
+                                                        "round": "2",
+                                                        "place": "Coral Bay",
+                                                        "placeLatitude": "-23.1423",
+                                                        "placeLongitude": "113.7723"
+                                                    },
+                                                    {
+                                                        "round": "3",
+                                                        "place": "Davao",
+                                                        "placeLatitude": "7.1907",
+                                                        "placeLongitude": "125.4553"
+                                                    }
+                                                ]} else if (date ==="2022-6-28") {
+                                                    jsonConst = [
+                                                        {
+                                                            "round": "1",
+                                                            "place": "Montreal",
+                                                            "placeLatitude": "45.5017",
+                                                            "placeLongitude": "-73.5673"
+                                                            
+                                                        },
+                                                        {
+                                                            "round": "2",
+                                                            "place": "Palma",
+                                                            "placeLatitude": "39.5696",
+                                                            "placeLongitude": "2.6502"
+                                                        },
+                                                        {
+                                                            "round": "3",
+                                                            "place": "Mersin",
+                                                            "placeLatitude": "36.8121",
+                                                            "placeLongitude": "34.6415"
+                                                        }
+                                                    ]} else if (date ==="2022-6-29") {
+                                                        jsonConst = [
+                                                            {
+                                                                "round": "1",
+                                                                "place": "Rome",
+                                                                "placeLatitude": "41.9028",
+                                                                "placeLongitude": "12.4964"
+                                                                
+                                                            },
+                                                            {
+                                                                "round": "2",
+                                                                "place": "Beirut",
+                                                                "placeLatitude": "33.8938",
+                                                                "placeLongitude": "35.5018"
+                                                            },
+                                                            {
+                                                                "round": "3",
+                                                                "place": "Samarkand",
+                                                                "placeLatitude": "39.6270",
+                                                                "placeLongitude": "66.9750"
+                                                            }
+                                                        ]}
+                                                        else if (date ==="2022-6-30") {
+                                                            jsonConst = [
+                                                                {
+                                                                    "round": "1",
+                                                                    "place": "Zürich",
+                                                                    "placeLatitude": "47.3769",
+                                                                    "placeLongitude": "8.5417"
+                                                                    
+                                                                },
+                                                                {
+                                                                    "round": "2",
+                                                                    "place": "Calgary",
+                                                                    "placeLatitude": "51.0447",
+                                                                    "placeLongitude": "-114.0719"
+                                                                },
+                                                                {
+                                                                    "round": "3",
+                                                                    "place": "Asunción",
+                                                                    "placeLatitude": "-25.2637",
+                                                                    "placeLongitude": "-57.5759"
+                                                                }
+                                                            ]}
 
 
 
