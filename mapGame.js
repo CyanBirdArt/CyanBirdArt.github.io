@@ -16,6 +16,7 @@ function hasOneDayPassed(){
     //alert('has been run before');
 
     i = 4
+
     mappy()
         return false;
 
@@ -33,11 +34,17 @@ function hasOneDayPassed(){
 
 // some function which should run once a day
 function runOncePerDay(){
-  if( !hasOneDayPassed() ) return false;
+    if( !hasOneDayPassed() ) return false;
 
-  // your code below
-  //alert('Good morning!');
-  i = 0
+    //clear local storage scores from previous days
+    localStorage.removeItem('distanceRound1');
+    localStorage.removeItem('roundScore1');
+    localStorage.removeItem('distanceRound2');
+    localStorage.removeItem('roundScore2');
+    localStorage.removeItem('distanceRound3');
+    localStorage.removeItem('roundScore3');
+    localStorage.removeItem('totalScoreModal');
+    i = 0
 
 }
 
@@ -1011,10 +1018,23 @@ function mappy() {
             
             document.getElementById("placeRound").innerHTML = "Click to see and share your score"
 
-            document.getElementById("highScoreEnd").innerHTML =    "Highscore:     " + highScores[0].totalScore;
-            document.getElementById("averageScoreEnd").innerHTML = "Average score: " + roundedAverage;
+            document.getElementById("highScore").innerHTML =    "Highscore:     " + highScores[0].totalScore;
+            document.getElementById("averageScore").innerHTML = "Average score: " + roundedAverage;
 
-            $('#scoreModalAlready').modal('show');
+            totalScore = localStorage.getItem('totalScoreModal')
+            console.log(localStorage.getItem('totalScoreModal'))
+            document.getElementById("yourScore").innerHTML = "You have already played Mappin today 🌎 \n Your score today: " + totalScore + "/30 points!"
+
+            document.getElementById("distanceRound1").innerHTML = localStorage.getItem('distanceRound1');
+            document.getElementById("roundScore1").innerHTML = localStorage.getItem('roundScore1');
+            document.getElementById("distanceRound2").innerHTML = localStorage.getItem('distanceRound2');
+            document.getElementById("roundScore2").innerHTML = localStorage.getItem('roundScore2');
+            document.getElementById("distanceRound3").innerHTML = localStorage.getItem('distanceRound3');
+            document.getElementById("roundScore3").innerHTML = localStorage.getItem('roundScore3');
+
+            $('#scoreModal').modal('show');
+
+            
 
             //add the points on the map for them to see?
             
@@ -1098,6 +1118,8 @@ function mappy() {
 
             document.getElementById("distanceRound1").innerHTML = distanceResultRounded
             document.getElementById("roundScore1").innerHTML = roundScore
+            localStorage.setItem('distanceRound1', distanceResultRounded);
+            localStorage.setItem('roundScore1', roundScore);
 
             roundScore1 = roundScore
           } else if (i === 1){
@@ -1106,6 +1128,8 @@ function mappy() {
 
             document.getElementById("distanceRound2").innerHTML = distanceResultRounded
             document.getElementById("roundScore2").innerHTML = roundScore
+            localStorage.setItem('distanceRound2', distanceResultRounded);
+            localStorage.setItem('roundScore2', roundScore);
             roundScore2 = roundScore
           }
           else if (i === 2){
@@ -1114,6 +1138,8 @@ function mappy() {
 
             document.getElementById("distanceRound3").innerHTML = distanceResultRounded
             document.getElementById("roundScore3").innerHTML = roundScore
+            localStorage.setItem('distanceRound3', distanceResultRounded);
+            localStorage.setItem('roundScore3', roundScore);
             roundScore3 = roundScore
             totalScore = roundScore1 +roundScore2 + roundScore3
             console.log(totalScore)
@@ -1131,6 +1157,7 @@ function mappy() {
           } else if (i === 2){
             i = i +1
             document.getElementById("yourScore").innerHTML = "Your score today: " + totalScore+ "/30 points!"
+            localStorage.setItem('totalScoreModal', totalScore);
             let arrayMessage = []
             const getRandom = (arrayMessage) => {
               return arrayMessage[Math.floor(Math.random() * arrayMessage.length)];
@@ -1314,7 +1341,7 @@ function hello() { console.log(i)
       document.getElementById("placeRound").innerHTML.onclick = $('#scoreModal').modal('show');
   } else if (i === 4) {
     // To show modal when button is clicked if already played today
-    document.getElementById("placeRound").innerHTML.onclick = $('#scoreModalAlready').modal('show');
+    document.getElementById("placeRound").innerHTML.onclick = $('#scoreModal').modal('show');
 } else if (document.getElementById("nextRound").id === "nextRound" && 1 < 3){
       map.graphics.clear();
       map.infoWindow.hide();
