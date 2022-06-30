@@ -73,7 +73,7 @@
             <li class="d-flex gap-4">
               <div>
                 <h5 class="mb-0">The more points the better!</h5>
-                Score as many points as you can in 3 rounds by clicking as close to the place as you can
+                Score as many points as you can in 3 rounds by clicking as close to the place as you can. Each place comes up with the place name followed by the country code, e.g: London, GBR
               </div>
             </li>
             <li class="d-flex gap-4">
@@ -203,6 +203,36 @@
                       <div class="px-2 py-8 my-8 text-center">
                         <h2 class="fw-bold mb-0">You have already played Mappin today 🌎</h2>
                       </div>
+                      <h2 class="fw-bold mb-0" id="yourScore"></h2>
+                      <table class="table table-hover bg-warning">
+                        <thead>
+                        <tr>
+                          <th scope="col">Location</th>
+                          <th scope="col">Distance (km)</th>
+                          <th scope="col">Score</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+              
+                        
+                          <tr class="bg-light">
+                            <td><a id="place1" href="" target="_blank"></a></td>
+                            <td id="distanceRound1"></td>
+                            <td id="roundScore1"></td>
+                          </tr>
+                          <tr class="bg-white">
+                            <td><a id="place2" href="" target="_blank"></a></td>
+                            <td id="distanceRound2"></td>
+                            <td id="roundScore2"></td>
+                          </tr>
+                          <tr class="table-light">
+                            <td><a id="place3" href="" target="_blank"></a></td>
+                            <td id="distanceRound3"></td>
+                            <td id="roundScore3"></td>
+                          </tr>
+              
+                        </tbody>
+                      </table>
                       <h2 class="fw-bold mb-0">Your overal stats...</h2>
                       <h2 class="fw mb-0" id="highScoreEnd"></h2>
                       <h2 class="fw mb-0" id="averageScoreEnd"></h2>
