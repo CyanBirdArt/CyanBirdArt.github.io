@@ -903,7 +903,155 @@ if (date == "2022-5-22") {
                                                                     "placeLatitude": "-25.2637",
                                                                     "placeLongitude": "-57.5759"
                                                                 }
-                                                            ]}
+                                                            ]} else if (date ==="2022-7-1") {
+                                                                jsonConst = [
+                                                                    {
+                                                                        "round": "1",
+                                                                        "place": "Maimi, US",
+                                                                        "placeLatitude": "25.7617",
+                                                                        "placeLongitude": "-80.1918"
+                                                                        
+                                                                    },
+                                                                    {
+                                                                        "round": "2",
+                                                                        "place": "Canberra, AU",
+                                                                        "placeLatitude": "-35.2802",
+                                                                        "placeLongitude": "149.1310"
+                                                                    },
+                                                                    {
+                                                                        "round": "3",
+                                                                        "place": "Juba, SS",
+                                                                        "placeLatitude": "4.8594",
+                                                                        "placeLongitude": "31.5713"
+                                                                    }
+                                                                ]} else if (date ==="2022-7-2") {
+                                                                    jsonConst = [
+                                                                        {
+                                                                            "round": "1",
+                                                                            "place": "Krakow, PL",
+                                                                            "placeLatitude": "50.0647",
+                                                                            "placeLongitude": "19.9450"
+                                                                            
+                                                                        },
+                                                                        {
+                                                                            "round": "2",
+                                                                            "place": "Anchorage, US",
+                                                                            "placeLatitude": "61.2176",
+                                                                            "placeLongitude": "-149.8997"
+                                                                        },
+                                                                        {
+                                                                            "round": "3",
+                                                                            "place": "Kochi, IN",
+                                                                            "placeLatitude": "9.9312",
+                                                                            "placeLongitude": "76.2673"
+                                                                        }
+                                                                    ]} else if (date ==="2022-7-3") {
+                                                                        jsonConst = [
+                                                                            {
+                                                                                "round": "1",
+                                                                                "place": "Vienna, AT",
+                                                                                "placeLatitude": "48.2082",
+                                                                                "placeLongitude": "16.3738"
+                                                                                
+                                                                            },
+                                                                            {
+                                                                                "round": "2",
+                                                                                "place": "Muscat, OM",
+                                                                                "placeLatitude": "23.5880",
+                                                                                "placeLongitude": "58.3829"
+                                                                            },
+                                                                            {
+                                                                                "round": "3",
+                                                                                "place": "Port Macquarie, AU",
+                                                                                "placeLatitude": "-31.4580",
+                                                                                "placeLongitude": "152.8975"
+                                                                            }
+                                                                        ]} else if (date ==="2022-7-4") {
+                                                                            jsonConst = [
+                                                                                {
+                                                                                    "round": "1",
+                                                                                    "place": "Dallas, US",
+                                                                                    "placeLatitude": "32.7767",
+                                                                                    "placeLongitude": "-96.7970"
+                                                                                    
+                                                                                },
+                                                                                {
+                                                                                    "round": "2",
+                                                                                    "place": "Bangkok, TH",
+                                                                                    "placeLatitude": "13.7563",
+                                                                                    "placeLongitude": "100.5018"
+                                                                                },
+                                                                                {
+                                                                                    "round": "3",
+                                                                                    "place": "Fukuoka, JP",
+                                                                                    "placeLatitude": "33.5902",
+                                                                                    "placeLongitude": "130.4017"
+                                                                                }
+                                                                            ]} else if (date ==="2022-7-5") {
+                                                                                jsonConst = [
+                                                                                    {
+                                                                                        "round": "1",
+                                                                                        "place": "Belfast, GBR",
+                                                                                        "placeLatitude": "54.5973",
+                                                                                        "placeLongitude": "-5.9301"
+                                                                                        
+                                                                                    },
+                                                                                    {
+                                                                                        "round": "2",
+                                                                                        "place": "Belgrade, SRB",
+                                                                                        "placeLatitude": "44.8125",
+                                                                                        "placeLongitude": "20.4612"
+                                                                                    },
+                                                                                    {
+                                                                                        "round": "3",
+                                                                                        "place": "Windhoek, NAM",
+                                                                                        "placeLatitude": "-22.5609",
+                                                                                        "placeLongitude": "17.0658"
+                                                                                    }
+                                                                                ]}
+                                                                                else if (date ==="2022-7-6") {
+                                                                                jsonConst = [
+                                                                                    {
+                                                                                        "round": "1",
+                                                                                        "place": "Wellington, NZL",
+                                                                                        "placeLatitude": "-41.2924",
+                                                                                        "placeLongitude": "174.7787"
+                                                                                        
+                                                                                    },
+                                                                                    {
+                                                                                        "round": "2",
+                                                                                        "place": "Portland, USA",
+                                                                                        "placeLatitude": "45.5152",
+                                                                                        "placeLongitude": "-122.6784"
+                                                                                    },
+                                                                                    {
+                                                                                        "round": "3",
+                                                                                        "place": "Caracas, VEN",
+                                                                                        "placeLatitude": "10.4806",
+                                                                                        "placeLongitude": "-66.9036"
+                                                                                    }
+                                                                                ]} else if (date ==="2022-7-7") {
+                                                                                    jsonConst = [
+                                                                                        {
+                                                                                            "round": "1",
+                                                                                            "place": "Oslo, NOR",
+                                                                                            "placeLatitude": "59.9139",
+                                                                                            "placeLongitude": "10.7522"
+                                                                                            
+                                                                                        },
+                                                                                        {
+                                                                                            "round": "2",
+                                                                                            "place": "Hanoi, VNM",
+                                                                                            "placeLatitude": "21.0278",
+                                                                                            "placeLongitude": "105.8342"
+                                                                                        },
+                                                                                        {
+                                                                                            "round": "3",
+                                                                                            "place": "Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch, GBR",
+                                                                                            "placeLatitude": "53.2246",
+                                                                                            "placeLongitude": "-4.1980"
+                                                                                        }
+                                                                                    ]}
 
 
 
