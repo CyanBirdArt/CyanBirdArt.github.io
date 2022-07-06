@@ -1051,7 +1051,91 @@ if (date == "2022-5-22") {
                                                                                             "placeLatitude": "53.2246",
                                                                                             "placeLongitude": "-4.1980"
                                                                                         }
-                                                                                    ]}
+                                                                                    ]} else if (date ==="2022-7-8") {
+                                                                                        jsonConst = [
+                                                                                            {
+                                                                                                "round": "1",
+                                                                                                "place": "Las Vegas, USA",
+                                                                                                "placeLatitude": "59.9139",
+                                                                                                "placeLongitude": "10.7522"
+                                                                                                
+                                                                                            },
+                                                                                            {
+                                                                                                "round": "2",
+                                                                                                "place": "Sofia, BGR",
+                                                                                                "placeLatitude": "21.0278",
+                                                                                                "placeLongitude": "105.8342"
+                                                                                            },
+                                                                                            {
+                                                                                                "round": "3",
+                                                                                                "place": "Managua, NIC",
+                                                                                                "placeLatitude": "53.2246",
+                                                                                                "placeLongitude": "-4.1980"
+                                                                                            }
+                                                                                        ]} else if (date ==="2022-7-9") {
+                                                                                            jsonConst = [
+                                                                                                {
+                                                                                                    "round": "1",
+                                                                                                    "place": "Warsaw, POL",
+                                                                                                    "placeLatitude": "59.9139",
+                                                                                                    "placeLongitude": "10.7522"
+                                                                                                    
+                                                                                                },
+                                                                                                {
+                                                                                                    "round": "2",
+                                                                                                    "place": "Kingston, JAM",
+                                                                                                    "placeLatitude": "21.0278",
+                                                                                                    "placeLongitude": "105.8342"
+                                                                                                },
+                                                                                                {
+                                                                                                    "round": "3",
+                                                                                                    "place": "Bangui, CAF",
+                                                                                                    "placeLatitude": "53.2246",
+                                                                                                    "placeLongitude": "-4.1980"
+                                                                                                }
+                                                                                            ]} else if (date ==="2022-7-10") {
+                                                                                                jsonConst = [
+                                                                                                    {
+                                                                                                        "round": "1",
+                                                                                                        "place": "Sydney, AUS",
+                                                                                                        "placeLatitude": "59.9139",
+                                                                                                        "placeLongitude": "10.7522"
+                                                                                                        
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "round": "2",
+                                                                                                        "place": "Kathmandu, NPL",
+                                                                                                        "placeLatitude": "21.0278",
+                                                                                                        "placeLongitude": "105.8342"
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "round": "3",
+                                                                                                        "place": "Bandar Seri Begawan, BRN",
+                                                                                                        "placeLatitude": "53.2246",
+                                                                                                        "placeLongitude": "-4.1980"
+                                                                                                    }
+                                                                                                ]} else if (date ==="2022-7-11") {
+                                                                                                    jsonConst = [
+                                                                                                        {
+                                                                                                            "round": "1",
+                                                                                                            "place": "Hanover, DEU",
+                                                                                                            "placeLatitude": "59.9139",
+                                                                                                            "placeLongitude": "10.7522"
+                                                                                                            
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "round": "2",
+                                                                                                            "place": "New Delhi, IND",
+                                                                                                            "placeLatitude": "21.0278",
+                                                                                                            "placeLongitude": "105.8342"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "round": "3",
+                                                                                                            "place": "Serrekunda, GMB",
+                                                                                                            "placeLatitude": "53.2246",
+                                                                                                            "placeLongitude": "-4.1980"
+                                                                                                        }
+                                                                                                    ]}
 
 
 
