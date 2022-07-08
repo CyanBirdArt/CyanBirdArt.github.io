@@ -1056,23 +1056,23 @@ if (date == "2022-5-22") {
                                                                                             {
                                                                                                 "round": "1",
                                                                                                 "place": "Las Vegas, USA",
-                                                                                                "placeLatitude": "59.9139",
-                                                                                                "placeLongitude": "10.7522"
+                                                                                                "placeLatitude": "36.114647",
+                                                                                                "placeLongitude": "-115.172813"
                                                                                                 
                                                                                             },
                                                                                             {
                                                                                                 "round": "2",
                                                                                                 "place": "Sofia, BGR",
-                                                                                                "placeLatitude": "21.0278",
-                                                                                                "placeLongitude": "105.8342"
+                                                                                                "placeLatitude": "42.698334",
+                                                                                                "placeLongitude": "23.319941"
                                                                                             },
                                                                                             {
                                                                                                 "round": "3",
                                                                                                 "place": "Managua, NIC",
-                                                                                                "placeLatitude": "53.2246",
-                                                                                                "placeLongitude": "-4.1980"
+                                                                                                "placeLatitude": "12.13282",
+                                                                                                "placeLongitude": "-86.2504"
                                                                                             }
-                                                                                        ]} else if (date ==="2022-7-9") {
+                                                                                        ]}else if (date ==="2022-7-9") {
                                                                                             jsonConst = [
                                                                                                 {
                                                                                                     "round": "1",
