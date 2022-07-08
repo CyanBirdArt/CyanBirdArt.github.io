@@ -1072,72 +1072,70 @@ if (date == "2022-5-22") {
                                                                                                 "placeLatitude": "12.13282",
                                                                                                 "placeLongitude": "-86.2504"
                                                                                             }
-                                                                                        ]}else if (date ==="2022-7-9") {
+                                                                                        ]} else if (date ==="2022-7-9") {
                                                                                             jsonConst = [
                                                                                                 {
                                                                                                     "round": "1",
                                                                                                     "place": "Warsaw, POL",
-                                                                                                    "placeLatitude": "59.9139",
-                                                                                                    "placeLongitude": "10.7522"
+                                                                                                    "placeLatitude": "52.237049",
+                                                                                                    "placeLongitude": "21.017532"
                                                                                                     
                                                                                                 },
                                                                                                 {
                                                                                                     "round": "2",
                                                                                                     "place": "Kingston, JAM",
-                                                                                                    "placeLatitude": "21.0278",
-                                                                                                    "placeLongitude": "105.8342"
+                                                                                                    "placeLatitude": "17.99702",
+                                                                                                    "placeLongitude": "-76.79358"
                                                                                                 },
                                                                                                 {
                                                                                                     "round": "3",
                                                                                                     "place": "Bangui, CAF",
-                                                                                                    "placeLatitude": "53.2246",
-                                                                                                    "placeLongitude": "-4.1980"
+                                                                                                    "placeLatitude": "4.3947",
+                                                                                                    "placeLongitude": "18.5582"
                                                                                                 }
                                                                                             ]} else if (date ==="2022-7-10") {
                                                                                                 jsonConst = [
                                                                                                     {
                                                                                                         "round": "1",
                                                                                                         "place": "Sydney, AUS",
-                                                                                                        "placeLatitude": "59.9139",
-                                                                                                        "placeLongitude": "10.7522"
+                                                                                                        "placeLatitude": "-33.8688",
+                                                                                                        "placeLongitude": "151.2093"
                                                                                                         
                                                                                                     },
                                                                                                     {
                                                                                                         "round": "2",
                                                                                                         "place": "Kathmandu, NPL",
-                                                                                                        "placeLatitude": "21.0278",
-                                                                                                        "placeLongitude": "105.8342"
+                                                                                                        "placeLatitude": "27.7172",
+                                                                                                        "placeLongitude": "85.3240"
                                                                                                     },
                                                                                                     {
                                                                                                         "round": "3",
                                                                                                         "place": "Bandar Seri Begawan, BRN",
-                                                                                                        "placeLatitude": "53.2246",
-                                                                                                        "placeLongitude": "-4.1980"
+                                                                                                        "placeLatitude": "4.9031",
+                                                                                                        "placeLongitude": "114.9398"
                                                                                                     }
                                                                                                 ]} else if (date ==="2022-7-11") {
                                                                                                     jsonConst = [
                                                                                                         {
                                                                                                             "round": "1",
                                                                                                             "place": "Hanover, DEU",
-                                                                                                            "placeLatitude": "59.9139",
-                                                                                                            "placeLongitude": "10.7522"
+                                                                                                            "placeLatitude": "52.37599",
+                                                                                                            "placeLongitude": "9.73202"
                                                                                                             
                                                                                                         },
                                                                                                         {
                                                                                                             "round": "2",
                                                                                                             "place": "New Delhi, IND",
-                                                                                                            "placeLatitude": "21.0278",
-                                                                                                            "placeLongitude": "105.8342"
+                                                                                                            "placeLatitude": "28.6139",
+                                                                                                            "placeLongitude": "77.2090"
                                                                                                         },
                                                                                                         {
                                                                                                             "round": "3",
                                                                                                             "place": "Serrekunda, GMB",
-                                                                                                            "placeLatitude": "53.2246",
-                                                                                                            "placeLongitude": "-4.1980"
+                                                                                                            "placeLatitude": "13.4370",
+                                                                                                            "placeLongitude": "-16.6812"
                                                                                                         }
                                                                                                     ]}
-
-
 
 document.getElementById("placeRound").innerHTML = "Round 1  of 3: Guess the location of " + jsonConst[0].place
 
