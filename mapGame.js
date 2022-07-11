@@ -1135,7 +1135,49 @@ if (date == "2022-5-22") {
                                                                                                             "placeLatitude": "13.4370",
                                                                                                             "placeLongitude": "-16.6812"
                                                                                                         }
-                                                                                                    ]}
+                                                                                                    ]} else if (date ==="2022-7-12") {
+                                                                                                        jsonConst = [
+                                                                                                            {
+                                                                                                                "round": "1",
+                                                                                                                "place": "Johannesburg, ZAF",
+                                                                                                                "placeLatitude": "-26.2041",
+                                                                                                                "placeLongitude": "28.0473"
+                                                                                                                
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "round": "2",
+                                                                                                                "place": "Ottawa, CAN",
+                                                                                                                "placeLatitude": "45.4215",
+                                                                                                                "placeLongitude": "-75.6972"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "round": "3",
+                                                                                                                "place": "Ashgabat, TKM",
+                                                                                                                "placeLatitude": "37.9601",
+                                                                                                                "placeLongitude": "58.3261"
+                                                                                                            }
+                                                                                                        ]} else if (date ==="2022-7-13") {
+                                                                                                            jsonConst = [
+                                                                                                                {
+                                                                                                                    "round": "1",
+                                                                                                                    "place": "Minneapolis, USA",
+                                                                                                                    "placeLatitude": "44.9778",
+                                                                                                                    "placeLongitude": "-93.2650"
+                                                                                                                    
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "round": "2",
+                                                                                                                    "place": "Cork, IRL",
+                                                                                                                    "placeLatitude": "51.8985",
+                                                                                                                    "placeLongitude": "-8.4756"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "round": "3",
+                                                                                                                    "place": "Niamey, NER",
+                                                                                                                    "placeLatitude": "13.5116",
+                                                                                                                    "placeLongitude": "2.1254"
+                                                                                                                }
+                                                                                                            ]}
 
 document.getElementById("placeRound").innerHTML = "Round 1  of 3: Guess the location of " + jsonConst[0].place
 
