@@ -1177,7 +1177,113 @@ if (date == "2022-5-22") {
                                                                                                                     "placeLatitude": "13.5116",
                                                                                                                     "placeLongitude": "2.1254"
                                                                                                                 }
-                                                                                                            ]}
+                                                                                                            ]} else if (date ==="2022-7-14") {
+                                                                                                                jsonConst = [
+                                                                                                                    {
+                                                                                                                        "round": "1",
+                                                                                                                        "place": "Shanghai, CHN",
+                                                                                                                        "placeLatitude": "31.2304",
+                                                                                                                        "placeLongitude": "121.4737"
+                                                                                                                        
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "round": "2",
+                                                                                                                        "place": "Tirana, ALB",
+                                                                                                                        "placeLatitude": "41.3275",
+                                                                                                                        "placeLongitude": "19.8187"
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "round": "3",
+                                                                                                                        "place": "Serrekunda, GMB",
+                                                                                                                        "placeLatitude": "13.4370",
+                                                                                                                        "placeLongitude": "16.6812"
+                                                                                                                    }
+                                                                                                                ]} else if (date ==="2022-7-15") {
+                                                                                                                    jsonConst = [
+                                                                                                                        {
+                                                                                                                            "round": "1",
+                                                                                                                            "place": "Seville, ESP",
+                                                                                                                            "placeLatitude": "37.3891",
+                                                                                                                            "placeLongitude": "-5.9845"
+                                                                                                                            
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "round": "2",
+                                                                                                                            "place": "Tbilisi , GEO",
+                                                                                                                            "placeLatitude": "41.7151",
+                                                                                                                            "placeLongitude": "44.8271"
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "round": "3",
+                                                                                                                            "place": "Hobart, AUS",
+                                                                                                                            "placeLatitude": "-42.8826",
+                                                                                                                            "placeLongitude": "147.3257"
+                                                                                                                        }
+                                                                                                                    ]} else if (date ==="2022-7-16") {
+                                                                                                                        jsonConst = [
+                                                                                                                            {
+                                                                                                                                "round": "1",
+                                                                                                                                "place": "Monterrey, MEX",
+                                                                                                                                "placeLatitude": "25.6866",
+                                                                                                                                "placeLongitude": "-100.3161"
+                                                                                                                                
+                                                                                                                            },
+                                                                                                                            {
+                                                                                                                                "round": "2",
+                                                                                                                                "place": "Split, HRV",
+                                                                                                                                "placeLatitude": "43.5147",
+                                                                                                                                "placeLongitude": "16.4435"
+                                                                                                                            },
+                                                                                                                            {
+                                                                                                                                "round": "3",
+                                                                                                                                "place": "Longyearbyen, NOR",
+                                                                                                                                "placeLatitude": "78.2232",
+                                                                                                                                "placeLongitude": "15.6267"
+                                                                                                                            }
+                                                                                                                        ]} else if (date ==="2022-7-17") {
+                                                                                                                            jsonConst = [
+                                                                                                                                {
+                                                                                                                                    "round": "1",
+                                                                                                                                    "place": "Minsk , BLR",
+                                                                                                                                    "placeLatitude": "53.9006",
+                                                                                                                                    "placeLongitude": "27.5590"
+                                                                                                                                    
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "round": "2",
+                                                                                                                                    "place": "Doha , QAT",
+                                                                                                                                    "placeLatitude": "25.2854",
+                                                                                                                                    "placeLongitude": "51.5310"
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "round": "3",
+                                                                                                                                    "place": "Ulaanbaatar , MNG",
+                                                                                                                                    "placeLatitude": "47.8864",
+                                                                                                                                    "placeLongitude": "106.9057"
+                                                                                                                                }
+                                                                                                                            ]} else if (date ==="2022-7-18") {
+                                                                                                                                jsonConst = [
+                                                                                                                                    {
+                                                                                                                                        "round": "1",
+                                                                                                                                        "place": "Washington, USA",
+                                                                                                                                        "placeLatitude": "47.7511",
+                                                                                                                                        "placeLongitude": "-120.7401"
+                                                                                                                                        
+                                                                                                                                    },
+                                                                                                                                    {
+                                                                                                                                        "round": "2",
+                                                                                                                                        "place": "Nairobi, KEN",
+                                                                                                                                        "placeLatitude": "-1.2921",
+                                                                                                                                        "placeLongitude": "36.8219"
+                                                                                                                                    },
+                                                                                                                                    {
+                                                                                                                                        "round": "3",
+                                                                                                                                        "place": "Cochabamba, BOL",
+                                                                                                                                        "placeLatitude": "-17.4140",
+                                                                                                                                        "placeLongitude": "-66.1653"
+                                                                                                                                    }
+                                                                                                                                ]}
+                                                                                                                
 
 document.getElementById("placeRound").innerHTML = "Round 1  of 3: Guess the location of " + jsonConst[0].place
 
