@@ -1282,7 +1282,28 @@ if (date == "2022-5-22") {
                                                                                                                                         "placeLatitude": "-17.4140",
                                                                                                                                         "placeLongitude": "-66.1653"
                                                                                                                                     }
-                                                                                                                                ]}
+                                                                                                                                ]} else if (date ==="2022-7-19") {
+                                                                                                                                    jsonConst = [
+                                                                                                                                        {
+                                                                                                                                            "round": "1",
+                                                                                                                                            "place": "Eindhoven, NLD",
+                                                                                                                                            "placeLatitude": "51.4231",
+                                                                                                                                            "placeLongitude": "5.4623"
+                                                                                                                                            
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "round": "2",
+                                                                                                                                            "place": "Busan, KOR",
+                                                                                                                                            "placeLatitude": "35.1796",
+                                                                                                                                            "placeLongitude": "129.0756"
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "round": "3",
+                                                                                                                                            "place": "Bamako, MLI",
+                                                                                                                                            "placeLatitude": "12.6392",
+                                                                                                                                            "placeLongitude": "-8.0029"
+                                                                                                                                        }
+                                                                                                                                    ]}
                                                                                                                 
 
 document.getElementById("placeRound").innerHTML = "Round 1  of 3: Guess the location of " + jsonConst[0].place
