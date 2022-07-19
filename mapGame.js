@@ -1287,15 +1287,15 @@ if (date == "2022-5-22") {
                                                                                                                                         {
                                                                                                                                             "round": "1",
                                                                                                                                             "place": "Eindhoven, NLD",
-                                                                                                                                            "placeLatitude": "51.4231",
-                                                                                                                                            "placeLongitude": "5.4623"
+                                                                                                                                            "placeLatitude": "",
+                                                                                                                                            "placeLongitude": ""
                                                                                                                                             
                                                                                                                                         },
                                                                                                                                         {
                                                                                                                                             "round": "2",
                                                                                                                                             "place": "Busan, KOR",
-                                                                                                                                            "placeLatitude": "35.1796",
-                                                                                                                                            "placeLongitude": "129.0756"
+                                                                                                                                            "placeLatitude": "",
+                                                                                                                                            "placeLongitude": ""
                                                                                                                                         },
                                                                                                                                         {
                                                                                                                                             "round": "3",
@@ -1303,7 +1303,25 @@ if (date == "2022-5-22") {
                                                                                                                                             "placeLatitude": "12.6392",
                                                                                                                                             "placeLongitude": "-8.0029"
                                                                                                                                         }
-                                                                                                                                    ]}
+                                                                                                                                    ]} else if (date ==="2022-7-20") {
+                                                                                                                                        jsonConst = [
+                                                                                                                                            {
+                                                                                                                                                "round": "1",
+                                                                                                                                                "place": "Turin, ITA",
+                                                                                                                                                "placeLatitude": "",
+                                                                                                                                                "placeLongitude": ""        
+                                                                                                                                            },
+                                                                                                                                            {
+                                                                                                                                                "round": "2",
+                                                                                                                                                "place": "Portland, USA",
+                                                                                                                                                "placeLatitude": "",
+                                                                                                                                                "placeLongitude": ""    },
+                                                                                                                                            {
+                                                                                                                                                "round": "3",
+                                                                                                                                                "place": "Oulu, FIN",
+                                                                                                                                                "placeLatitude": "",
+                                                                                                                                                "placeLongitude": ""    }
+                                                                                                                                        ]}
                                                                                                                 
 
 document.getElementById("placeRound").innerHTML = "Round 1  of 3: Guess the location of " + jsonConst[0].place
@@ -1333,16 +1351,16 @@ document.getElementById("place3").setAttribute("href", place3URL)
 function mappy() { 
   require([
     "esri/map", "esri/geometry/webMercatorUtils", "esri/geometry/Extent",
-    "esri/tasks/GeometryService","esri/tasks/DistanceParameters",
+    "esri/tasks/GeometryService","esri/tasks/DistanceParameters", "esri/tasks/locator",
     "esri/geometry/Point", "esri/geometry/Polyline", 
-    "esri/dijit/Scalebar", "esri/dijit/InfoWindow",
+    "esri/dijit/Scalebar", "esri/dijit/InfoWindow", "dijit/registry",
     "esri/graphic", "esri/InfoTemplate", "esri/symbols/SimpleMarkerSymbol",
     "esri/symbols/SimpleLineSymbol", "esri/Color", "dojo/dom", "dojo/domReady!"
   ], function(
     Map, webMercatorUtils, Extent,
-    GeometryService, DistanceParameters,
+    GeometryService, DistanceParameters, Locator,
     Point, Polyline,
-    Scalebar, InfoWindow,
+    Scalebar, InfoWindow, registry,
     Graphic, InfoTemplate, SimpleMarkerSymbol,
     SimpleLineSymbol, Color, dom
   ) {
@@ -1369,6 +1387,40 @@ function mappy() {
         map: map,
         scalebarUnit: "metric"
       });
+
+      locator = new Locator("https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer");
+        // Links the locate button to clicking the locate function
+        map.on("click", locate);
+
+        //Draw and zoom to the result when the geocoding is complete
+        locator.on("address-to-locations-complete", function(evt) {
+          showResults(evt.addresses[0]);
+        });
+
+        function showResults(results) {
+          var rdiv = dom.byId("resultsdiv");
+        
+          var content = [];
+
+          placeLat = results.location.x.toFixed(5);
+            placeLong = results.location.y.toFixed(5);
+            console.log(placeLat)
+            console.log(placeLong)
+        }
+
+        //Perform the geocode. This function runs when the "Locate" button is pushed.
+        function locate() {
+            var addressHard = jsonConst[i].place
+          var address = {
+             SingleLine: addressHard
+          };
+          var options = {
+            address: address,
+            outFields: ["*"]
+          };
+          //optionally return the out fields if you need to calculate the extent of the geocoded point
+          locator.addressToLocations(options);
+        }
 
         if (i === 4) {
             // Find data from localStorage
@@ -1447,9 +1499,7 @@ function mappy() {
         // Defining point using the lat and long of place
         // pt = correct place lat and long
         //pt2 = guessed location lat and long 
-        pt = new Point(jsonConst[i].placeLongitude, jsonConst[i].placeLatitude)
-        placeLat = jsonConst[i].placeLatitude
-        placeLong = jsonConst[i].placeLongitude
+        pt = new Point(placeLat, placeLong)
 
         // Adding polyline between point of guess and point of place
         polylineGuess = new Polyline;
