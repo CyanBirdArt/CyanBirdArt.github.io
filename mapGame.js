@@ -1321,7 +1321,50 @@ if (date == "2022-5-22") {
                                                                                                                                                 "place": "Oulu, FIN",
                                                                                                                                                 "placeLatitude": "",
                                                                                                                                                 "placeLongitude": ""    }
-                                                                                                                                        ]}
+                                                                                                                                        ]} else if (date ==="2022-7-21") {
+                                                                                                                                            jsonConst = [
+                                                                                                                                                {
+                                                                                                                                                    "round": "1",
+                                                                                                                                                    "place": "Buenos Aires, ARG",
+                                                                                                                                                    "placeLatitude": "",
+                                                                                                                                                    "placeLongitude": ""
+                                                                                                                                                  
+                                                                                                                                                },
+                                                                                                                                                {
+                                                                                                                                                    "round": "2",
+                                                                                                                                                    "place": "Colombo, LKA",
+                                                                                                                                                    "placeLatitude": "",
+                                                                                                                                                    "placeLongitude": ""
+                                                                                                                                                },
+                                                                                                                                                {
+                                                                                                                                                    "round": "3",
+                                                                                                                                                    "place": "Culiacán, MEX",
+                                                                                                                                                    "placeLatitude": "",
+                                                                                                                                                    "placeLongitude": ""
+                                                                                                                                                }
+                                                                                                                                            ]} 
+                                                                                                                                            else if (date ==="2022-7-22") {
+                                                                                                                                            jsonConst = [
+                                                                                                                                                {
+                                                                                                                                                    "round": "1",
+                                                                                                                                                    "place": "Tokyo, JPN",
+                                                                                                                                                    "placeLatitude": "",
+                                                                                                                                                    "placeLongitude": ""
+                                                                                                                                                  
+                                                                                                                                                },
+                                                                                                                                                {
+                                                                                                                                                    "round": "2",
+                                                                                                                                                    "place": "Poznań, POL",
+                                                                                                                                                    "placeLatitude": "",
+                                                                                                                                                    "placeLongitude": ""
+                                                                                                                                                },
+                                                                                                                                                {
+                                                                                                                                                    "round": "3",
+                                                                                                                                                    "place": "Sfax , TUN",
+                                                                                                                                                    "placeLatitude": "",
+                                                                                                                                                    "placeLongitude": ""
+                                                                                                                                                }
+                                                                                                                                            ]}
                                                                                                                 
 
 document.getElementById("placeRound").innerHTML = "Round 1  of 3: Guess the location of " + jsonConst[0].place
