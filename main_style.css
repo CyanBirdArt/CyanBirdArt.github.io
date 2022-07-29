@@ -21,6 +21,7 @@ html
       box-shadow: 0 0 3px #8e8e8e;
     }
   }
-#nextRound {
+  
+#placeRound:enabled {
     animation: glowing 1300ms infinite;
 }
