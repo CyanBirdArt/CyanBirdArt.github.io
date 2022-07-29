@@ -53,7 +53,7 @@ let symbolPlace1, symbolPlace2, symbolPlace3;
 let highScores, dateCheck;
 
 // Setting the intial value of the Navigation button
-document.getElementById("placeRound").innerHTML = "Round 1  of 3: Guess the location of " + placeName[0]
+document.getElementById("placeRound").innerHTML = "Round 1  of 3: Guess the location of " + placeName[0];
 
 disableButton = () => {
     // Disabling the button to be click while on a round
@@ -160,9 +160,9 @@ function mappin(){
                }, 0); 
             };
 
-            let roundedAverage = Math.round(findAverageScore(highScores) * 10) / 10
+            let roundedAverage = Math.round(findAverageScore(highScores) * 10) / 10;
             // If they have already played today then this will come up
-            document.getElementById("placeRound").innerHTML = "Click to see and share your score"
+            document.getElementById("placeRound").innerHTML = "Click to see and share your score";
             document.getElementById("highScore").innerHTML =    "Highscore:     " + highScores[0].totalScore;
             document.getElementById("averageScore").innerHTML = "Average score: " + roundedAverage;
             totalScore = localStorage.getItem('totalScoreModal');
@@ -190,7 +190,7 @@ function mappin(){
             let placeLocation = evt.addresses[0];
             placeLong = placeLocation.location.x.toFixed(5);
             placeLat = placeLocation.location.y.toFixed(5);
-            mappinGame()
+            mappinGame();
         });
 
         //Perform the geocode to find x and y of place for each round
@@ -291,15 +291,15 @@ function mappin(){
                 // Putting scores into element that can be called in HTML
                 if ( roundCounter === 0) {
                     //save gemetries from round 1 into variable
-                    place1pt = placePoint
-                    guess1pt = guessPoint
+                    place1pt = placePoint;
+                    guess1pt = guessPoint;
                     // Adding to HTML elements
                     document.getElementById("distanceRound1").innerHTML = distanceResultRounded;
                     document.getElementById("roundScore1").innerHTML = roundScore;
                     // Saving to local storage for future reference
                     localStorage.setItem('distanceRound1', distanceResultRounded);
                     localStorage.setItem('roundScore1', roundScore);
-                    roundScore1 = roundScore
+                    roundScore1 = roundScore;
                     // Setting the button to click for next round and enabling button
                     document.getElementById("placeRound").innerHTML = roundScore1 + " points! Click here for next round";
                     document.querySelector("#placeRound").disabled = false;
