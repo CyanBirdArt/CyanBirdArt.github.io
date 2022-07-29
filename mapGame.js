@@ -26,15 +26,15 @@ const  place3 = placeName[2];
 const place1Plus = place1.replaceAll(' ', '+');
 const place2Plus = place2.replaceAll(' ', '+');
 const place3Plus = place3.replaceAll(' ', '+');
-const place1URL = "https://www.google.com/search?q=" + place1Plus
-const place2URL = "https://www.google.com/search?q=" + place2Plus
-const place3URL = "https://www.google.com/search?q=" + place3Plus
-document.getElementById("place1").innerHTML = place1
-document.getElementById("place2").innerHTML = place2
-document.getElementById("place3").innerHTML = place3
-document.getElementById("place1").setAttribute("href", place1URL)
-document.getElementById("place2").setAttribute("href", place2URL)
-document.getElementById("place3").setAttribute("href", place3URL)
+const place1URL = "https://www.google.com/search?q=" + place1Plus;
+const place2URL = "https://www.google.com/search?q=" + place2Plus;
+const place3URL = "https://www.google.com/search?q=" + place3Plus;
+document.getElementById("place1").innerHTML = place1;
+document.getElementById("place2").innerHTML = place2;
+document.getElementById("place3").innerHTML = place3;
+document.getElementById("place1").setAttribute("href", place1URL);
+document.getElementById("place2").setAttribute("href", place2URL);
+document.getElementById("place3").setAttribute("href", place3URL);
 
 // Map variables
 //var map, view, graphicsLayer;
