@@ -17,6 +17,18 @@ if (date ==="2022-7-29") {
     placeName = ["Lima, PER", "Thessaloniki , GRC", "Sana'a , YEM"];
 } else if (date ==="2022-8-1") {
     placeName = ["Toulouse, FRA", "Indianapolis, USA", "Zanzibar, TZA"];
+} else if (date ==="2022-8-2") {
+    placeName = ["Cambridge, GBR", "Gwangju, KOR", "Naypyidaw, MMR"];
+} else if (date ==="2022-8-3") {
+    placeName = ["Copenhagen, DNK", "Edmonton, CAN", "Mbabane, SWZ"];
+} else if (date ==="2022-8-4") {
+    placeName = ["Milwaukee, USA", "Geelong, AUS", "Panevėžys, LTU"];
+} else if (date ==="2022-8-5") {
+    placeName = ["Nice, FRA", "Medellín, COL", "Guwahati, IND"];
+} else if (date ==="2022-8-6") {
+    placeName = ["New Orleans, USA", "San José, CRI", "Jayapura, IDN"];
+} else if (date ==="2022-8-7") {
+    placeName = ["Düsseldorf, DEU", "Nicosia, CYP", "Albuquerque, USA"];
 };
 
 // Get place names for each round and put them into a google URL for model in HTML
