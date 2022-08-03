@@ -323,13 +323,14 @@ function mappin(){
                     // Save geometries from round 2
                     place2pt = placePoint;
                     guess2pt = guessPoint;
+                    // Adding HTML elements
                     document.getElementById("distanceRound2").innerHTML = distanceResultRounded;
                     document.getElementById("roundScore2").innerHTML = roundScore;
                     localStorage.setItem('distanceRound2', distanceResultRounded);
                     localStorage.setItem('roundScore2', roundScore);
                     roundScore2 = roundScore;
                     // Setting the button to click for next round and enabling button
-                    document.getElementById("placeRound").innerHTML = roundScore1 + " points! Click here for next round";
+                    document.getElementById("placeRound").innerHTML = roundScore2 + " points! Click here for next round";
                     document.querySelector("#placeRound").disabled = false;
                     // Adding one to round counter to go to next item in array, 'next round'
                     roundCounter ++;
