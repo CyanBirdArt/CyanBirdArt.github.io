@@ -4,31 +4,55 @@
 
 // Defining todays date
 const today = new Date();
-const date = String(today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate());
+const date = (today.getMonth()+1)+'-'+today.getDate();
 
 // Declaring variables:
 // Big ol' list of place names, one for each day
 let placeName;
-if (date ==="2022-7-29") {
+if (date ==="7-29") {
     placeName = ["Christchurch, NZL", "Tallinn, EST", "Rio Branco , BRA"];
-} else if (date ==="2022-7-30") {
+} else if (date ==="7-30") {
     placeName = ["Nashville, USA", "Manama , BHR", "Nassau , BHS"];
-} else if (date ==="2022-7-31") {
+} else if (date ==="7-31") {
     placeName = ["Lima, PER", "Thessaloniki , GRC", "Sana'a , YEM"];
-} else if (date ==="2022-8-1") {
+} else if (date ==="8-1") {
     placeName = ["Toulouse, FRA", "Indianapolis, USA", "Zanzibar, TZA"];
-} else if (date ==="2022-8-2") {
+} else if (date ==="8-2") {
     placeName = ["Cambridge, GBR", "Gwangju, KOR", "Naypyidaw, MMR"];
-} else if (date ==="2022-8-3") {
+} else if (date ==="8-3") {
     placeName = ["Copenhagen, DNK", "Edmonton, CAN", "Mbabane, SWZ"];
-} else if (date ==="2022-8-4") {
+} else if (date ==="8-4") {
     placeName = ["Milwaukee, USA", "Geelong, AUS", "Panevėžys, LTU"];
-} else if (date ==="2022-8-5") {
+} else if (date ==="8-5") {
     placeName = ["Nice, FRA", "Medellín, COL", "Guwahati, IND"];
-} else if (date ==="2022-8-6") {
+} else if (date ==="8-6") {
     placeName = ["New Orleans, USA", "San José, CRI", "Jayapura, IDN"];
-} else if (date ==="2022-8-7") {
+} else if (date ==="8-7") {
     placeName = ["Düsseldorf, DEU", "Nicosia, CYP", "Albuquerque, USA"];
+} else if (date ==="8-8") {
+    placeName = ["Limerick, IRL", "Rabat, MAR", "Bishkek , KGZ"];
+} else if (date ==="8-9") {
+    placeName = ["Boston, USA", "Denpasar, IDN", "Esteli, NIC"];
+} else if (date ==="8-10") {
+    placeName = ["Wenzhou, CHN", "Rosario, ARG", "Nadi, FJI"];
+} else if (date ==="8-11") {
+    placeName = ["The Hague, NLD", "Surabaya, IDN", "Antofagasta, CHL"];
+} else if (date ==="8-12") {
+    placeName = ["Taipei, TWN", "Montgomery, USA", "Carnarvon, AUS"];
+} else if (date ==="8-13") {
+    placeName = ["São Paulo, BRA", "Abu Dhabi, UAE", "Ciudad de la Paz, GNQ"];
+} else if (date ==="8-14") {
+    placeName = ["Mississauga, CAN", "Chișinău, MDA", "Almaty, KAZ"];
+} else if (date ==="8-15") {
+    placeName = ["Vientiane, LAO", "Vaduz, LIE", "İzmir, TUR"];
+} else if (date ==="8-16") {
+    placeName = ["Ibiza, ESP", "Amman, JOR", "Kotzebue, USA"];
+} else if (date ==="8-17") {
+    placeName = ["Jeddah, SAU", "Nagoya, JPN", "Gaborone, BWA"];
+} else if (date ==="8-18") {
+    placeName = ["Pretoria, ZAF", "Montego Bay, JAM", "Port Howard, FLK"];
+} else if (date ==="8-19") {
+    placeName = ["Riga, LVA", "St Helier, JEY", "Riyadh, SAU"];
 };
 
 // Get place names for each round and put them into a google URL for model in HTML
