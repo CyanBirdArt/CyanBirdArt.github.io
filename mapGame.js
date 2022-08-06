@@ -480,7 +480,41 @@ function navigateButton() {
 function copyClipboard(){
     // to Copy score to clipboard and url to mappin-game.com to share 
     let urlMappin = new URL('https://mappin-game.com/');
-    navigator.clipboard.writeText("I scored " + totalScore + " points on Mappin! 🌎 Can you beat my daily score? " + urlMappin);
+    let round1Emoji, round2Emoji, round3Emoji;
+    if (localStorage.getItem('roundScore1') > 8) {
+        round1Emoji = "🤩";
+    } else if (localStorage.getItem('roundScore1') > 6) {
+        round1Emoji = "😎"; 
+    } else if (localStorage.getItem('roundScore1') > 4) {
+        round1Emoji = "🧐";
+    } else if (localStorage.getItem('roundScore1') > 1) {
+        round1Emoji = "😵";
+    } else if (localStorage.getItem('roundScore1') == 0) {
+        round1Emoji = "🤫";
+    };
+    if (localStorage.getItem('roundScore2') > 8) {
+        round2Emoji = "😍";
+    } else if (localStorage.getItem('roundScore2') > 6) {
+        round2Emoji = "🤓"; 
+    } else if (localStorage.getItem('roundScore2') > 4) {
+        round2Emoji = "😊";
+    } else if (localStorage.getItem('roundScore2') > 1) {
+        round2Emoji = "😕";
+    } else if (localStorage.getItem('roundScore2') == 0) {
+        round2Emoji = "🥴";
+    };
+    if (localStorage.getItem('roundScore3') > 8) {
+        round3Emoji = "🧠";
+    } else if (localStorage.getItem('roundScore3') > 6) {
+        round3Emoji = "🥳"; 
+    } else if (localStorage.getItem('roundScore3') > 4) {
+        round3Emoji = "😃";
+    } else if (localStorage.getItem('roundScore3') > 1) {
+        round3Emoji = "😳";
+    } else if (localStorage.getItem('roundScore3') == 0) {
+        round3Emoji = "🤐";
+    };
+    navigator.clipboard.writeText("I scored " + totalScore + " points on Mappin! 🌎 \n Round 1️⃣: " + localStorage.getItem('roundScore1') + round1Emoji +"\n Round 2️⃣: " + localStorage.getItem('roundScore2') + round2Emoji + " \n Round 3️⃣: " + localStorage.getItem('roundScore3') + round3Emoji + "\n Can you beat my daily score? " + urlMappin);
     document.getElementById("copyClip").innerHTML = "Copied to clipboard, paste to share!";
 }
   
