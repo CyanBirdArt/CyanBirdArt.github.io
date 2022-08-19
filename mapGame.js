@@ -53,6 +53,12 @@ if (date ==="7-29") {
     placeName = ["Pretoria, ZAF", "Montego Bay, JAM", "Port Howard, FLK"];
 } else if (date ==="8-19") {
     placeName = ["Riga, LVA", "St Helier, JEY", "Riyadh, SAU"];
+} else if (date ==="8-21") {
+    placeName = ["Liverpool, GBR", "Trabzon, TUR", "Kumasi, GHA"];
+} else if (date ==="8-22") {
+    placeName = ["Austin, USA", "Treviso, ITA", "Pelotas, BRA"];
+} else if (date ==="8-23") {
+    placeName = ["Albury, AUS", "Kaunas, LTU", "Lhasa, CHN "];
 };
 
 // Get place names for each round and put them into a google URL for model in HTML
@@ -481,40 +487,41 @@ function copyClipboard(){
     // to Copy score to clipboard and url to mappin-game.com to share 
     let urlMappin = new URL('https://mappin-game.com/');
     let round1Emoji, round2Emoji, round3Emoji;
+    let random = Math.floor(Math.random() * 3)
     if (localStorage.getItem('roundScore1') > 8) {
-        round1Emoji = "🤩";
+        round1Emoji = ["🤩", "🔥", "😎"];
     } else if (localStorage.getItem('roundScore1') > 6) {
-        round1Emoji = "😎"; 
+        round1Emoji = ["💪", "😍", "😏"]; 
     } else if (localStorage.getItem('roundScore1') > 4) {
-        round1Emoji = "🧐";
+        round1Emoji = ["🧐", "👍", "😝"];
     } else if (localStorage.getItem('roundScore1') > 1) {
-        round1Emoji = "😵";
+        round1Emoji = ["😵", "😱", "😵"];
     } else if (localStorage.getItem('roundScore1') == 0) {
-        round1Emoji = "🤫";
+        round1Emoji = ["🤫", "🙃", "🥶"];
     };
     if (localStorage.getItem('roundScore2') > 8) {
-        round2Emoji = "😍";
+        round2Emoji = ["👌", "🤩", "🤑"];
     } else if (localStorage.getItem('roundScore2') > 6) {
-        round2Emoji = "🤓"; 
+        round2Emoji = ["🤓", "😜", "🤓"];; 
     } else if (localStorage.getItem('roundScore2') > 4) {
-        round2Emoji = "😊";
+        round2Emoji = ["😊", "😁", "🤠"];;
     } else if (localStorage.getItem('roundScore2') > 1) {
-        round2Emoji = "😕";
+        round2Emoji = ["😕", "💩", "😲"];;
     } else if (localStorage.getItem('roundScore2') == 0) {
-        round2Emoji = "🥴";
+        round2Emoji = ["🥴", "😶", "😩"];;
     };
     if (localStorage.getItem('roundScore3') > 8) {
-        round3Emoji = "🧠";
+        round3Emoji = ["🧠", "💃", "🕺"];;
     } else if (localStorage.getItem('roundScore3') > 6) {
-        round3Emoji = "🥳"; 
+        round3Emoji = ["🥳", "🤓", "🦾"];; 
     } else if (localStorage.getItem('roundScore3') > 4) {
-        round3Emoji = "😃";
+        round3Emoji = ["😃", "🤯", "😊"];;
     } else if (localStorage.getItem('roundScore3') > 1) {
-        round3Emoji = "😳";
+        round3Emoji = ["😳", "🤔", "😯"];;
     } else if (localStorage.getItem('roundScore3') == 0) {
-        round3Emoji = "🤐";
+        round3Emoji = ["🤐", "😬", "💀"];;
     };
-    navigator.clipboard.writeText("I scored " + totalScore + " points on Mappin! 🌎 \n Round 1️⃣: " + localStorage.getItem('roundScore1') + round1Emoji +"\n Round 2️⃣: " + localStorage.getItem('roundScore2') + round2Emoji + " \n Round 3️⃣: " + localStorage.getItem('roundScore3') + round3Emoji + "\n Can you beat my daily score? " + urlMappin);
+    navigator.clipboard.writeText("I scored " + totalScore + " points on Mappin! 🌎 \n Round 1️⃣: " + localStorage.getItem('roundScore1') + round1Emoji[random] +"\n Round 2️⃣: " + localStorage.getItem('roundScore2') + round2Emoji[random] + " \n Round 3️⃣: " + localStorage.getItem('roundScore3') + round3Emoji[random] + "\n Can you beat my daily score? " + urlMappin);
     document.getElementById("copyClip").innerHTML = "Copied to clipboard, paste to share!";
 }
   
