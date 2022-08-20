@@ -53,11 +53,11 @@ if (date ==="7-29") {
     placeName = ["Pretoria, ZAF", "Montego Bay, JAM", "Port Howard, FLK"];
 } else if (date ==="8-19") {
     placeName = ["Riga, LVA", "St Helier, JEY", "Riyadh, SAU"];
-} else if (date ==="8-21") {
+} else if (date ==="8-20") {
     placeName = ["Liverpool, GBR", "Trabzon, TUR", "Kumasi, GHA"];
-} else if (date ==="8-22") {
+} else if (date ==="8-21") {
     placeName = ["Austin, USA", "Treviso, ITA", "Pelotas, BRA"];
-} else if (date ==="8-23") {
+} else if (date ==="8-22") {
     placeName = ["Albury, AUS", "Kaunas, LTU", "Lhasa, CHN "];
 };
 
