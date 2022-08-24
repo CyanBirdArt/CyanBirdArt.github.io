@@ -65,7 +65,9 @@ if (date ==="7-29") {
     placeName = ["Kobe, JPN", "Zell am See, AUT", "Lindon, AUS"];
 } else if (date ==="8-25") {
     placeName = ["Exeter, GBR", "Monastir, TUN", "Sikkim, IND"];
-};
+} else if (date ==="8-26") {
+    placeName = ["San Francisco, USA", "Nadi, FJI", "Timbuktu, MLI"];
+}
 
 // Get place names for each round and put them into a google URL for model in HTML
 const  place1 = placeName[0];
