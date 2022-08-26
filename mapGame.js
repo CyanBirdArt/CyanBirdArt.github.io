@@ -6,87 +6,404 @@
 const today = new Date();
 const date = (today.getMonth()+1)+'-'+today.getDate();
 
+// Day of the year from 1-366
+var start = new Date(today.getFullYear(), 0, 0);
+var diff = (today - start) + ((start.getTimezoneOffset() - today.getTimezoneOffset()) * 60 * 1000);
+var oneDay = 1000 * 60 * 60 * 24;
+var dayNumber = Math.floor(diff / oneDay);
+
 // Declaring variables:
 // Big ol' list of place names, one for each day
-let placeName;
-if (date ==="7-29") {
-    placeName = ["Christchurch, NZL", "Tallinn, EST", "Rio Branco , BRA"];
-} else if (date ==="7-30") {
-    placeName = ["Nashville, USA", "Manama , BHR", "Nassau , BHS"];
-} else if (date ==="7-31") {
-    placeName = ["Lima, PER", "Thessaloniki , GRC", "Sana'a , YEM"];
-} else if (date ==="8-1") {
-    placeName = ["Toulouse, FRA", "Indianapolis, USA", "Zanzibar, TZA"];
-} else if (date ==="8-2") {
-    placeName = ["Cambridge, GBR", "Gwangju, KOR", "Naypyidaw, MMR"];
-} else if (date ==="8-3") {
-    placeName = ["Copenhagen, DNK", "Edmonton, CAN", "Mbabane, SWZ"];
-} else if (date ==="8-4") {
-    placeName = ["Milwaukee, USA", "Geelong, AUS", "Panevėžys, LTU"];
-} else if (date ==="8-5") {
-    placeName = ["Nice, FRA", "Medellín, COL", "Guwahati, IND"];
-} else if (date ==="8-6") {
-    placeName = ["New Orleans, USA", "San José, CRI", "Jayapura, IDN"];
-} else if (date ==="8-7") {
-    placeName = ["Düsseldorf, DEU", "Nicosia, CYP", "Albuquerque, USA"];
-} else if (date ==="8-8") {
-    placeName = ["Limerick, IRL", "Rabat, MAR", "Bishkek , KGZ"];
-} else if (date ==="8-9") {
-    placeName = ["Boston, USA", "Denpasar, IDN", "Esteli, NIC"];
-} else if (date ==="8-10") {
-    placeName = ["Wenzhou, CHN", "Rosario, ARG", "Nadi, FJI"];
-} else if (date ==="8-11") {
-    placeName = ["The Hague, NLD", "Surabaya, IDN", "Antofagasta, CHL"];
-} else if (date ==="8-12") {
-    placeName = ["Taipei, TWN", "Montgomery, USA", "Carnarvon, AUS"];
-} else if (date ==="8-13") {
-    placeName = ["São Paulo, BRA", "Abu Dhabi, UAE", "Ciudad de la Paz, GNQ"];
-} else if (date ==="8-14") {
-    placeName = ["Mississauga, CAN", "Chișinău, MDA", "Almaty, KAZ"];
-} else if (date ==="8-15") {
-    placeName = ["Vientiane, LAO", "Vaduz, LIE", "İzmir, TUR"];
-} else if (date ==="8-16") {
-    placeName = ["Ibiza, ESP", "Amman, JOR", "Kotzebue, USA"];
-} else if (date ==="8-17") {
-    placeName = ["Jeddah, SAU", "Nagoya, JPN", "Gaborone, BWA"];
-} else if (date ==="8-18") {
-    placeName = ["Pretoria, ZAF", "Montego Bay, JAM", "Port Howard, FLK"];
-} else if (date ==="8-19") {
-    placeName = ["Riga, LVA", "St Helier, JEY", "Riyadh, SAU"];
-} else if (date ==="8-20") {
-    placeName = ["Liverpool, GBR", "Trabzon, TUR", "Kumasi, GHA"];
-} else if (date ==="8-21") {
-    placeName = ["Austin, USA", "Treviso, ITA", "Pelotas, BRA"];
-} else if (date ==="8-22") {
-    placeName = ["Albury, AUS", "Kaunas, LTU", "Lhasa, CHN "];
-} else if (date ==="8-23") {
-    placeName = ["Wichita, USA", "Benijófar, ESP", "Ayacucho, PER"];
-} else if (date ==="8-24") {
-    placeName = ["Kobe, JPN", "Zell am See, AUT", "Lindon, AUS"];
-} else if (date ==="8-25") {
-    placeName = ["Exeter, GBR", "Monastir, TUN", "Sikkim, IND"];
-} else if (date ==="8-26") {
-    placeName = ["San Francisco, USA", "Nadi, FJI", "Timbuktu, MLI"];
-} else if (date ==="8-27") {
-    placeName = ["Delhi, IND", "Nantes, FRA", "Peleloetepu, SUR"];
-} 
+let placeName = ""
 
-// Get place names for each round and put them into a google URL for model in HTML
-const  place1 = placeName[0];
-const  place2 = placeName[1];
-const  place3 = placeName[2];
-const place1Plus = place1.replaceAll(' ', '+');
-const place2Plus = place2.replaceAll(' ', '+');
-const place3Plus = place3.replaceAll(' ', '+');
-const place1URL = "https://www.google.com/search?q=" + place1Plus;
-const place2URL = "https://www.google.com/search?q=" + place2Plus;
-const place3URL = "https://www.google.com/search?q=" + place3Plus;
-document.getElementById("place1").innerHTML = place1;
-document.getElementById("place2").innerHTML = place2;
-document.getElementById("place3").innerHTML = place3;
-document.getElementById("place1").setAttribute("href", place1URL);
-document.getElementById("place2").setAttribute("href", place2URL);
-document.getElementById("place3").setAttribute("href", place3URL);
+data = [{"0":"Meknes, MAR","1":"Trujillo, PER","2":"Sakarya, TUR"},
+{"0":"Malaga, ESP","1":"Seville, ESP","2":"Basilan City, PHL"},
+{"0":"San Diego, USA","1":"Meerut, IND","2":"Johannesburg, ZAF"},
+{"0":"Duisburg, DEU","1":"Wellington, NZL","2":"Mar Del Plata, ARG"},
+{"0":"Mogadishu, SOM","1":"Bremen, DEU","2":"Hai Phong, VNM"},
+{"0":"Mataram, IDN","1":"Asuncion, PRY","2":"Mosul, IRQ"},
+{"0":"Erbil, IRQ","1":"Diwaniyah, IRQ","2":"Antalya, TUR"},
+{"0":"Ottawa, CAN","1":"Galway, IRL","2":"Krakow, POL"},
+{"0":"Multan, PAK","1":"Nampula, MOZ","2":"Honolulu, USA"},
+{"0":"Belfast, GBR","1":"Port Louis, MUS","2":"Khon Kaen, THA"},
+{"0":"Katsina, NGA","1":"Salta, ARG","2":"Sanliurfa, TUR"},
+{"0":"Seoul, KOR","1":"Oran, DZA","2":"Pekan Baru, IDN"},
+{"0":"Albufeira, PRT","1":"Likasi, COD","2":"Damascus, SYR"},
+{"0":"Queretaro, MEX","1":"Riyadh, SAU","2":"Mwanza, TZA"},
+{"0":"Edmonton, CAN","1":"San Salvador, SLV","2":"Tainan, TWN"},
+{"0":"Ibb, YEM","1":"Hillah, IRQ","2":"Dubai, ARE"},
+{"0":"Tunis, TUN","1":"Munich, DEU","2":"Bangui, CAF"},
+{"0":"Cabimas, VEN","1":"Madrid, ESP","2":"Zinder, NER"},
+{"0":"Exeter, GBR","1":"Sao Jose Dos Campos, BRA","2":"Beira, MOZ"},
+{"0":"Cali, COL","1":"Praia, CPV","2":"Novosibirsk, RUS"},
+{"0":"Villahermosa, MEX","1":"Gujranwala, PAK","2":"Nagoya, JPN"},
+{"0":"Saint Peter Port, GGY","1":"Kansas City, USA","2":"Izmir, TUR"},
+{"0":"Qom, IRN","1":"Cucuta, COL","2":"Toluca De Lerdo, MEX"},
+{"0":"Valencia, VEN","1":"Merida, MEX","2":"Tokyo, JPN"},
+{"0":"Sheffield, GBR","1":"Islamabad, PAK","2":"Ouagadougou, BFA"},
+{"0":"Brussels, BEL","1":"Nairobi, KEN","2":"Murcia, ESP"},
+{"0":"Kuching, MYS","1":"Antipolo, PHL","2":"Las Vegas, USA"},
+{"0":"Niamey, NER","1":"Osaka, JPN","2":"St. George's, GRD"},
+{"0":"Teresina, BRA","1":"Tshikapa, COD","2":"Muscat, OMN"},
+{"0":"Shenzhen, CHN","1":"Cuito, AGO","2":"Hermosillo, MEX"},
+{"0":"Morelia, MEX","1":"Abakaliki, NGA","2":"Lattakia, SYR"},
+{"0":"Shizuoka, JPN","1":"Kagoshima, JPN","2":"Karachi, PAK"},
+{"0":"Istanbul, TUR","1":"Seregno, ITA","2":"Auckland, NZL"},
+{"0":"Gibraltar, GIB","1":"Banjarmasin, IDN","2":"Kingston, JAM"},
+{"0":"Marrakesh, MAR","1":"Rio De Janeiro, BRA","2":"Moroni, COM"},
+{"0":"Sydney, AUS","1":"Canberra, AUS","2":"Hurghada, EGY"},
+{"0":"Kahramanmaras, TUR","1":"Memphis, USA","2":"Faisalabad, PAK"},
+{"0":"Montreal, CAN","1":"Al Mansurah, EGY","2":"Hong Kong, HKG"},
+{"0":"Dongguan, CHN","1":"Bristol, GBR","2":"Haifa, ISR"},
+{"0":"Cartagena, COL","1":"Barcelona, ESP","2":"Batam, IDN"},
+{"0":"Agadir, MAR","1":"Tabuk, SAU","2":"Charlotte, USA"},
+{"0":"Maracay, VEN","1":"Arusha, TZA","2":"Bunia, COD"},
+{"0":"Curitiba, BRA","1":"Taoyuan, TWN","2":"La Plata, ARG"},
+{"0":"Khartoum, SDN","1":"Accra, GHA","2":"Athens, GRC"},
+{"0":"Tolyatti, RUS","1":"Phuket, THA","2":"Jūrmala, LVA"},
+{"0":"San Antonio, USA","1":"Villavicencio, COL","2":"Xi An Shaanxi, CHN"},
+{"0":"Castries, LCA","1":"San Sebastian, ESP","2":"Essen, DEU"},
+{"0":"Hallstatt, AUT","1":"Bacolod, PHL","2":"Luxembourg City, LUX"},
+{"0":"San Francisco, USA","1":"Indore, IND","2":"Kananga, COD"},
+{"0":"Gombe, NGA","1":"Donetsk, UKR","2":"Budapest, HUN"},
+{"0":"Taif, SAU","1":"Mecca, SAU","2":"Ado Ekiti, NGA"},
+{"0":"Guadalajara, MEX","1":"Grenoble, FRA","2":"Tasikmalaya, IDN"},
+{"0":"Tanger, MAR","1":"Bamako, MLI","2":"Riyadh, SAU"},
+{"0":"Rome, ITA","1":"Kuala Lumpur, MYS","2":"Suva, FJI"},
+{"0":"Denver, USA","1":"Bloemfontein, ZAF","2":"Semarang, IDN"},
+{"0":"Berlin, DEU","1":"Marrakesh, MAR","2":"Geneva, CHE"},
+{"0":"Uige, AGO","1":"Grande Vitoria, BRA","2":"Conakry, GIN"},
+{"0":"Pietermaritzburg, ZAF","1":"Tokyo, JPN","2":"Bien Hoa, VNM"},
+{"0":"Madurai, IND","1":"Mersin, TUR","2":"Birmingham, GBR"},
+{"0":"Cuiaba, BRA","1":"Jakarta, IDN","2":"Miami, USA"},
+{"0":"Valletta, MLT","1":"Almaty, KAZ","2":"Yaounde, CMR"},
+{"0":"Da Nang, VNM","1":"Delhi, IND","2":"Saint Helier, JEY"},
+{"0":"Catania, ITA","1":"San Luis Potosi, MEX","2":"El Djelfa, DZA"},
+{"0":"Goyang, KOR","1":"Beijing, CHN","2":"Managua, NIC"},
+{"0":"Liege, BEL","1":"Goma, COD","2":"Stockholm, SWE"},
+{"0":"Hamhung, PRK","1":"Amsterdam, NLD","2":"Abuja, NGA"},
+{"0":"Nasiriyah, IRQ","1":"Osaka, JPN","2":"Monaco, MCO"},
+{"0":"Leon De Los Aldamas, MEX","1":"Feira De Santana, BRA","2":"Bouake, CIV"},
+{"0":"Belo Horizonte, BRA","1":"Barisal, BGD","2":"General Santos City, PHL"},
+{"0":"Sao Paulo, BRA","1":"Tepic, MEX","2":"Leicester, GBR"},
+{"0":"Ankara, TUR","1":"Wuhan, CHN","2":"Sao Paulo, BRA"},
+{"0":"Columbus, USA","1":"Salvador, BRA","2":"Port Sudan, SDN"},
+{"0":"Cork, IRL","1":"Bandung, IDN","2":"Kanpur, IND"},
+{"0":"Kolkata, IND","1":"Yamoussoukro, CIV","2":"San Jose Del Monte, PHL"},
+{"0":"Surabaya, IDN","1":"Akureyri, ISL","2":"Phoenix, USA"},
+{"0":"Ad Dammam, SAU","1":"Yekaterinburg, RUS","2":"Nouméa, NCL"},
+{"0":"Bukavu, COD","1":"Bobo Dioulasso, BFA","2":"Nizhniy Novgorod, RUS"},
+{"0":"Al Raqqa, SYR","1":"West Yorkshire, GBR","2":"Cartagena, COL"},
+{"0":"Maseru, LSO","1":"Palembang, IDN","2":"Port of Spain, TTO"},
+{"0":"Mbouda, CMR","1":"Chengdu, CHN","2":"Cebu City, NZL"},
+{"0":"Gaziantep, TUR","1":"Eskisehir, TUR","2":"Cancun, MEX"},
+{"0":"Florence, ITA","1":"Sri Jayawardenepura Kotte, LKA","2":"Brighton, GBR"},
+{"0":"Loum, CMR","1":"Calgary, CAN","2":"Shenzhen, CHN"},
+{"0":"Nay Pyi Taw, MMR","1":"Bahawalpur, PAK","2":"Stavanger, NOR"},
+{"0":"Porto Velho, BRA","1":"Hamburg, DEU","2":"Lahore, PAK"},
+{"0":"Sarajevo, BIH","1":"Dushanbe, TJK","2":"Cairo, EGY"},
+{"0":"Banghazi, LBY","1":"Shenyang, CHN","2":"Tripoli, LBY"},
+{"0":"Gaoxiong, TWN","1":"Naples, ITA","2":"Honiara, SLB"},
+{"0":"Sofia, BGR","1":"San Juan, PRI","2":"Bursa, TUR"},
+{"0":"Montreal, CAN","1":"Johannesburg, ZAF","2":"Santa Fe, ARG"},
+{"0":"Karachi, PAK","1":"Dodoma, TZA","2":"Huambo, AGO"},
+{"0":"Guangzhou, CHN","1":"Durban, ZAF","2":"Beijing, CHN"},
+{"0":"Port Elizabeth, ZAF","1":"Nassau, BHS","2":"Casablanca, MAR"},
+{"0":"Barquisimeto, VEN","1":"Saint Petersburg, RUS","2":"Kingstown, VCT"},
+{"0":"Rayong, THA","1":"Hannover, DEU","2":"Baghdad, IRQ"},
+{"0":"Belgrade, SRB","1":"Sylhet, BGD","2":"Ipoh, MYS"},
+{"0":"Klaipėda, LTU","1":"Busan, KOR","2":"Zurich, CHE"},
+{"0":"Medina, SAU","1":"Buenos Aires, ARG","2":"El Obeid, SDN"},
+{"0":"Ulaanbaatar, MNG","1":"Fes, MAR","2":"Pune, IND"},
+{"0":"Cape Town, ZAF","1":"David, PAN","2":"Beirut, LBN"},
+{"0":"Zhuhai, CHN","1":"Quebec City, CAN","2":"Apia, WSM"},
+{"0":"Douglas, IMN","1":"Kigali, RWA","2":"Hufuf Mubarraz, SAU"},
+{"0":"Saipan, MNP","1":"Kumasi, GHA","2":"Cancún, MEX"},
+{"0":"Kerman, IRN","1":"Chiang Rai, THA","2":"Lilongwe, MWI"},
+{"0":"Jambi, IDN","1":"Tamale, GHA","2":"Hamilton, CAN"},
+{"0":"Calabar, NGA","1":"Tlaxcala, MEX","2":"Macapa, BRA"},
+{"0":"Chihuahua, MEX","1":"Culiacan, MEX","2":"Manama, BHR"},
+{"0":"Quetta, PAK","1":"Milan, ITA","2":"Nashville, USA"},
+{"0":"Prague, CZE","1":"Vadodara, IND","2":"Moscow, RUS"},
+{"0":"San Jose, USA","1":"Kuantan, MYS","2":"Abu Dhabi, ARE"},
+{"0":"Zagreb, HRV","1":"Kermanshah, IRN","2":"Omsk, RUS"},
+{"0":"Nuuk, GRL","1":"Ho Chi Minh City, VNM","2":"Tabriz, IRN"},
+{"0":"Dakar, SEN","1":"Campo Grande, BRA","2":"Singapore, SGP"},
+{"0":"Medellin, COL","1":"Poza Rica De Hidalgo, MEX","2":"Chiang Mai, THA"},
+{"0":"Stuttgart, DEU","1":"Tianjin, CHN","2":"Kryvyi Rih, UKR"},
+{"0":"Saint Petersburg, RUS","1":"Nicosia, CYP","2":"Philadelphia, USA"},
+{"0":"Los Angeles, USA","1":"Uyo, NGA","2":"Glasgow, GBR"},
+{"0":"Matsuyama, JPN","1":"Zamboanga City, PHL","2":"Malatya, TUR"},
+{"0":"Kampala, UGA","1":"Yongin, KOR","2":"Taipei, TWN"},
+{"0":"Frankfurt, DEU","1":"Mandalay, MMR","2":"Los Angeles, USA"},
+{"0":"Amman, JOR","1":"Namangan, UZB","2":"Benin City, NGA"},
+{"0":"Nantes, FRA","1":"Cologne, DEU","2":"Kharkiv, UKR"},
+{"0":"Asmara, ERI","1":"Manaus, BRA","2":"Al Hudaydah, YEM"},
+{"0":"Bridgetown, BRB","1":"Samarkand, UZB","2":"Chittagong, BGD"},
+{"0":"La Paz, BOL","1":"Uvira, COD","2":"Bucaramanga, COL"},
+{"0":"Lome, TGO","1":"Nanjing, CHN","2":"Lubumbashi, COD"},
+{"0":"Abu Dhabi, ARE","1":"Brasilia, BRA","2":"Caracas, VEN"},
+{"0":"Shenzhen, CHN","1":"Cape Town, ZAF","2":"Jundiai, BRA"},
+{"0":"Tegucigalpa, HND","1":"Thiruvananthapuram, IND","2":"Omaha, USA"},
+{"0":"Medina, SAU","1":"Vaduz, LIE","2":"Mashhad, IRN"},
+{"0":"Changwon, KOR","1":"Izmir, TUR","2":"Lisbon, PRT"},
+{"0":"Niigata, JPN","1":"Dhaka, BGD","2":"Arak, IRN"},
+{"0":"Washington, USA","1":"Skopje, MKD","2":"Ludhiana, IND"},
+{"0":"Toronto, CAN","1":"Stockholm, SWE","2":"Al Mukalla, YEM"},
+{"0":"Barranquilla, COL","1":"Braga, PRT","2":"Burgos, ESP"},
+{"0":"Belem, BRA","1":"Santo Domingo, DMA","2":"Chennai, IND"},
+{"0":"Bologna, ITA","1":"Paris, FRA","2":"Krakow, POL"},
+{"0":"Bur Sa'id, EGY","1":"Brazzaville, COD","2":"Paris, FRA"},
+{"0":"Beijing, CHN","1":"Aguascalientes, MEX","2":"Southampton, GBR"},
+{"0":"Djibouti, DJI","1":"Irbid, JOR","2":"Ilorin, NGA"},
+{"0":"The Hague, NLD","1":"Mexico City, MEX","2":"Karbala, IRQ"},
+{"0":"Singapore, SGP","1":"Nakhon Ratchasima, THA","2":"Manila, PHL"},
+{"0":"Mekele, ETH","1":"Brussels, BEL","2":"Jiddah, SAU"},
+{"0":"Porto-Novo, BEN","1":"Tel Aviv, ISR","2":"Puebla, MEX"},
+{"0":"Marseille, FRA","1":"Nyala, SDN","2":"Vijayawada, IND"},
+{"0":"Guangzhou, CHN","1":"Edinburgh, GBR","2":"Ramallah (de facto), PSE"},
+{"0":"Harare, ZWE","1":"Peshawar, PAK","2":"Hanoi, VNM"},
+{"0":"Bissau, GNB","1":"Pathum Thani, THA","2":"Bandar Abbas, IRN"},
+{"0":"Kota Kinabalu, MYS","1":"Chiang Mai, THA","2":"Ljubljana, SVN"},
+{"0":"Dar Es Salaam, TZA","1":"Johor Bahru, MYS","2":"Comilla, BGD"},
+{"0":"Austin, USA","1":"Eindhoven, GBR","2":"Caracas, VEN"},
+{"0":"Fort Worth, USA","1":"Utsunomiya, JPN","2":"Papeete, PYF"},
+{"0":"Santa Cruz, BOL","1":"Akure, NGA","2":"Chennai, IND"},
+{"0":"Saratov, RUS","1":"Rabat, MAR","2":"Samut Sakhon, THA"},
+{"0":"Herat, AFG","1":"Merca, SOM","2":"Kitchener, CAN"},
+{"0":"Amsterdam, NLD","1":"Ikorodu, NGA","2":"Alicante, ESP"},
+{"0":"Jakarta, IDN","1":"Brasilia, BRA","2":"Pointe Noire, COD"},
+{"0":"Warsaw, POL","1":"Lisbon, PRT","2":"Zarqa, JOR"},
+{"0":"Ndola, ZMB","1":"Bishkek, KGZ","2":"Tripoli, LBY"},
+{"0":"Bhopal, IND","1":"Malanje, AGO","2":"Agra, IND"},
+{"0":"Safaqis, TUN","1":"Sydney, AUS","2":"Gold Coast, AUS"},
+{"0":"Pretoria, ZAF","1":"Chennai, IND","2":"Jaipur, IND"},
+{"0":"Taipei, TWN","1":"Volgograd, RUS","2":"Kobe, JPN"},
+{"0":"Santa Marta, COL","1":"Addis Ababa, ETH","2":"Portland, USA"},
+{"0":"Indianapolis, USA","1":"Hyderabad, IND","2":"Pachuca De Soto, MEX"},
+{"0":"Chon Buri, THA","1":"Taizhong, TWN","2":"Kiev, UKR"},
+{"0":"Ciudad Juarez, MEX","1":"Panama City, PAN","2":"Bournemouth, GBR"},
+{"0":"Nurenberg, DEU","1":"Adelaide, AUS","2":"Bacoor, PHL"},
+{"0":"Monterrey, MEX","1":"Vereeniging, ZAF","2":"Tarawa, KIR"},
+{"0":"Manila, PHL","1":"Acapulco De Juarez, MEX","2":"Jacksonville, USA"},
+{"0":"Matamoros, MEX","1":"George Town, CYM","2":"Padang, IDN"},
+{"0":"Odesa, UKR","1":"Monrovia, LBR","2":"Sheikhupura, PAK"},
+{"0":"Palermo, ITA","1":"Tashkent, UZB","2":"Dammam, SAU"},
+{"0":"Gloucester, GBR","1":"Tartu, EST","2":"Cebu City, PHL"},
+{"0":"Warsaw, POL","1":"Bogra, BGD","2":"Bogor, IDN"},
+{"0":"Fresno, USA","1":"Lyon, FRA","2":"Gomel, BLR"},
+{"0":"Jiddah, SAU","1":"Toluca De Lerdo, MEX","2":"Alexandria, EGY"},
+{"0":"Krabi, THA","1":"Da Nang, VNM","2":"Honolulu, USA"},
+{"0":"Zaragoza, ESP","1":"Cotonou, BEN","2":"Amara, IRQ"},
+{"0":"Veracruz, MEX","1":"Palikir, FSM","2":"Ha Long, VNM"},
+{"0":"Leipzig, DEU","1":"Kikwit, COD","2":"Kabul, AFG"},
+{"0":"Funafuti, TUV","1":"Doha, QAT","2":"Ahvaz, IRN"},
+{"0":"Nagoya, JPN","1":"Antwerp, BEL","2":"Misratah, LBY"},
+{"0":"Aracaju, BRA","1":"Aalborg, DNK","2":"San Francisco, USA"},
+{"0":"Hamilton, CAN","1":"Cuernavaca, MEX","2":"Londrina, BRA"},
+{"0":"Juiz De Fora, BRA","1":"Imus, PHL","2":"Tehran, IRN"},
+{"0":"Chongqing, CHN","1":"Copenhagen, DNK","2":"Shimkent, KAZ"},
+{"0":"Lima, PER","1":"Malaga, ESP","2":"Kiev, UKR"},
+{"0":"Sargodha, PAK","1":"Cairo, EGY","2":"Amsterdam, NLD"},
+{"0":"Cheonan, KOR","1":"Aden, YEM","2":"Braşov, ROU"},
+{"0":"Van, TUR","1":"Casablanca, MAR","2":"Bari, ITA"},
+{"0":"Xinbei, TWN","1":"Port Vila, VUT","2":"Gwangju, KOR"},
+{"0":"Taiz, YEM","1":"Gaza, PSE","2":"Florence, ITA"},
+{"0":"Busto Arsizio, ITA","1":"Valencia, ESP","2":"Venice, ITA"},
+{"0":"Kanpur, IND","1":"Baixada Santista, BRA","2":"Graz, AUT"},
+{"0":"London, GBR","1":"Bangkok, THA","2":"Udon Thani, THA"},
+{"0":"Bekasi, IDN","1":"Tucson, USA","2":"Porto, PRT"},
+{"0":"Algiers, DZA","1":"Venice, ITA","2":"Joinville, BRA"},
+{"0":"Chiclayo, PER","1":"Aba, NGA","2":"Cardiff, GBR"},
+{"0":"Krasnodar, RUS","1":"Mbuji Mayi, COD","2":"La Laguna, MEX"},
+{"0":"Santiago, CHL","1":"Oujda, MAR","2":"Shanghai, CHN"},
+{"0":"Padova, ITA","1":"San Miguel De Tucuman, ARG","2":"Belmopan, BLZ"},
+{"0":"Thrissur, IND","1":"Managua, NIC","2":"Kuwait City, KWT"},
+{"0":"Port Harcourt, NGA","1":"Detroit, USA","2":"Gaza, PSE"},
+{"0":"Paramaribo, SUR","1":"Las Vegas, USA","2":"West Rand, ZAF"},
+{"0":"Be'er Sheva, ISR","1":"Madrid, ESP","2":"Sekondi Takoradi, GHA"},
+{"0":"Cordoba, ARG","1":"Sukkur, PAK","2":"Vale Do Aco, BRA"},
+{"0":"Copenhagen, DNK","1":"St. John's, ATG","2":"Bangalore, IND"},
+{"0":"Nakhon Pathom, THA","1":"Fortaleza, BRA","2":"Porto, PRT"},
+{"0":"Ribeirao Preto, BRA","1":"Makassar, IDN","2":"Hyderabad, PAK"},
+{"0":"Sanaa, YEM","1":"Dortmund, DEU","2":"Aberdeen , GBR"},
+{"0":"Lahore, PAK","1":"Sucre, BOL","2":"Oslo, NOR"},
+{"0":"Andorra la Vella, AND","1":"Utrecht, NLD","2":"Lille, FRA"},
+{"0":"Natal, BRA","1":"Oklahoma City, USA","2":"Campinas, BRA"},
+{"0":"Suweon, KOR","1":"Bandar Seri Begawan, BRN","2":"Monaco, MCO"},
+{"0":"Kabinda, COD","1":"Liverpool, GBR","2":"Melbourne, AUS"},
+{"0":"London Ca, CAN","1":"Manama, BHR","2":"Sharjah, ARE"},
+{"0":"Osaka, JPN","1":"Medan, IDN","2":"Ciudad Guayana, VEN"},
+{"0":"Mesa, USA","1":"Nottingham, GBR","2":"Patna, IND"},
+{"0":"Ogbomosho, NGA","1":"Kayseri, TUR","2":"Dresden, DEU"},
+{"0":"Ubon Ratchathani, THA","1":"Salzburg, AUT","2":"Nairobi, KEN"},
+{"0":"Reynosa, MEX","1":"Khamis Mushayt, SAU","2":"Cochabamba, BOL"},
+{"0":"Port Moresby, PNG","1":"Al Ain, ARE","2":"Kannur, IND"},
+{"0":"Dasmarinas, PHL","1":"Barcelona Puerto La Cruz, VEN","2":"Voronezh, RUS"},
+{"0":"Bali, IDN","1":"Grande Sao Luis, BRA","2":"Abidjan, CIV"},
+{"0":"Hangzhou, CHN","1":"Bristol, GBR","2":"Toulouse, FRA"},
+{"0":"Kraków, POL","1":"Brussels, BEL","2":"Buenos Aires, ARG"},
+{"0":"Rio De Janeiro, BRA","1":"Rajkot, IND","2":"Cairo, EGY"},
+{"0":"Muğla, TUR","1":"Nice, FRA","2":"Malé, MDV"},
+{"0":"Havana, CUB","1":"Concepcion, CHL","2":"Vancouver, CAN"},
+{"0":"Pereira, COL","1":"Rotterdam, NLD","2":"Maiduguri, NGA"},
+{"0":"Nashville, USA","1":"Frankfurt am Main, DEU","2":"Rustenburg, ZAF"},
+{"0":"Frankfurt, DEU","1":"Rhodes, GRC","2":"Tbilisi, GEO"},
+{"0":"Kuala Lumpur, MYS","1":"Guangzhou, CHN","2":"Seattle, USA"},
+{"0":"Macau, MAC","1":"Georgetown, GUY","2":"Macao, MAC"},
+{"0":"Colombo, LKA","1":"Jerusalem, ISR","2":"Bandar Lampung, IDN"},
+{"0":"Khulna, BGD","1":"Zurich, CHE","2":"Kochi, IND"},
+{"0":"Podgorica, MNE","1":"Maputo, MOZ","2":"Ar Rayyan, QAT"},
+{"0":"Montevideo, URY","1":"Winnipeg, CAN","2":"Basseterre, KNA"},
+{"0":"Samarinda, IDN","1":"Guilin, CHN","2":"Astana, KAZ"},
+{"0":"Melbourne, AUS","1":"Rupganj, BGD","2":"Monterrey, MEX"},
+{"0":"Yaounde, CMR","1":"Najaf, IRQ","2":"Krasnoyarsk, RUS"},
+{"0":"Kozhikode, IND","1":"Seoul, KOR","2":"Fukuoka, JPN"},
+{"0":"Kirkuk, IRQ","1":"Jerusalem, PSE","2":"Charlotte Amalie, VIR"},
+{"0":"Libreville, GAB","1":"Tanta, EGY","2":"Kathmandu, NPL"},
+{"0":"Moscow, RUS","1":"Mariehamn, ALA","2":"Davao City, PHL"},
+{"0":"Vancouver, CAN","1":"Lusaka, ZMB","2":"Fukuoka, JPN"},
+{"0":"Sokoto, NGA","1":"Valparaiso, CHL","2":"Rio de Janeiro, BRA"},
+{"0":"Perm, RUS","1":"Toulon, FRA","2":"Gitega, BDI"},
+{"0":"Surat, IND","1":"Batam, IDN","2":"Anyang, KOR"},
+{"0":"Celaya, MEX","1":"San Pedro Sula, HND","2":"Rawalpindi, PAK"},
+{"0":"Yangon, MMR","1":"Barcelona, ESP","2":"Milwaukee, USA"},
+{"0":"Baku, AZE","1":"Poznan, POL","2":"Cuautla Morelos, MEX"},
+{"0":"Sialkot, PAK","1":"Chittagong, BGD","2":"Ansan, KOR"},
+{"0":"Freetown, SLE","1":"Mumbai, IND","2":"Seoul, KOR"},
+{"0":"Manchester, GBR","1":"Ardabil, IRN","2":"Buenos Aires, ARG"},
+{"0":"Karaganda, KAZ","1":"As Suways, EGY","2":"Verona, ITA"},
+{"0":"Ibague, COL","1":"Maceio, BRA","2":"Victoria, SYC"},
+{"0":"Ar Rusayfah, JOR","1":"Vancouver, CAN","2":"Cali, COL"},
+{"0":"Incheon, KOR","1":"Roseau, DMA","2":"Lagos, NGA"},
+{"0":"Jeju, KOR","1":"Puerto Vallarta, MEX","2":"Coimbra, PRT"},
+{"0":"Konya, TUR","1":"Road Town, VGB","2":"Ufa, RUS"},
+{"0":"Mumbai, IND","1":"Vaduz, LIE","2":"Santiago, DMA"},
+{"0":"San Jose, CRI","1":"Thimphu, BTN","2":"Diyarbakir, TUR"},
+{"0":"Depok, IDN","1":"Surakarta, IDN","2":"Bauchi, NGA"},
+{"0":"Lagos, NGA","1":"Cagayan De Oro City, PHL","2":"Mbeya, TZA"},
+{"0":"Goiania, BRA","1":"Berlin, DEU","2":"Nonthaburi, THA"},
+{"0":"Kolwezi, COD","1":"Split, HRV","2":"Dhaka, BGD"},
+{"0":"Kalasin, THA","1":"Ahmedabad, IND","2":"Penang Island, MYS"},
+{"0":"Lodz, POL","1":"Gaborone, BWA","2":"Suzhou, CHN"},
+{"0":"Rome, ITA","1":"Kinshasa, COD","2":"Tórshavn, FRO"},
+{"0":"Paris, FRA","1":"Torquay, GBR","2":"Zahedan, IRN"},
+{"0":"Delhi, IND","1":"Nadi, FJI","2":"Ulsan, KOR"},
+{"0":"Oshogbo, NGA","1":"Aarhus, DNK","2":"Phnom Penh, KHM"},
+{"0":"Joao Pessoa, BRA","1":"Newcastle Upon Tyne, GBR","2":"Yazd, IRN"},
+{"0":"Guatemala City, GTM","1":"Tel Aviv, ISR","2":"Kano, NGA"},
+{"0":"Santiago, CHL","1":"Orlando, USA","2":"Surat Thani, THA"},
+{"0":"Mumbai, IND","1":"Cheongju, KOR","2":"Sydney, AUS"},
+{"0":"Barcelona, ESP","1":"Kaduna, NGA","2":"Pyongyang, PRK"},
+{"0":"Bucheon, KOR","1":"Jubayl, SAU","2":"Tauranga, NZL"},
+{"0":"Riga, LVA","1":"Dakar, SEN","2":"São Tomé, STP"},
+{"0":"Wroclaw, POL","1":"London, GBR","2":"Thessaloniki, GRC"},
+{"0":"Douala, CMR","1":"Blantyre Limbe, MWI","2":"Delhi, IND"},
+{"0":"Malang, IDN","1":"Reykjavík, ISL","2":"Bogota, COL"},
+{"0":"Cologne, DEU","1":"Port Au Prince, HTI","2":"Uberlandia, BRA"},
+{"0":"Xalapa, MEX","1":"Hamah, SYR","2":"Beirut, LBN"},
+{"0":"Lviv, UKR","1":"Albuquerque, USA","2":"Istanbul, TUR"},
+{"0":"Kumamoto, JPN","1":"Nice, FRA","2":"Arequipa, PER"},
+{"0":"Nashik, IND","1":"Visakhapatnam, IND","2":"Douai Lens, FRA"},
+{"0":"Al Mahallah Al Kubra, EGY","1":"Homs, SYR","2":"San José, CRI"},
+{"0":"Turin, ITA","1":"Hong Kong, HKG","2":"Umuahia, NGA"},
+{"0":"Malappuram, IND","1":"N Djamena, TCD","2":"Onitsha, NGA"},
+{"0":"Dublin, IRL","1":"Guayaquil, ECU","2":"Ambon, IDN"},
+{"0":"Abeokuta, NGA","1":"Angeles City, PHL","2":"Tyumen, RUS"},
+{"0":"Ho Chi Minh City, VNM","1":"Bangkok, THA","2":"Antalya, TUR"},
+{"0":"Postojna, SVN","1":"Rasht, IRN","2":"Los Angeles, USA"},
+{"0":"Marrakech, MAR","1":"Bucharest, ROU","2":"Lucerne, CHE"},
+{"0":"Soshanguve, ZAF","1":"Tijuana, MEX","2":"Saltillo, MEX"},
+{"0":"Groningen, GBR","1":"Kaunas, LTU","2":"Owerri, NGA"},
+{"0":"Adana, TUR","1":"Bergen, NOR","2":"Lima, PER"},
+{"0":"Tallinn, EST","1":"Oaxaca De Juarez, MEX","2":"Benguela, AGO"},
+{"0":"Pyongyang, PRK","1":"Tuxtla Gutierrez, MEX","2":"Johor Bahru, MYS"},
+{"0":"Vienna, AUT","1":"Berlin, DEU","2":"Florence, ITA"},
+{"0":"Kinshasa, COD","1":"Denizli, TUR","2":"Valledupar, COL"},
+{"0":"Zaporizhzhya, UKR","1":"Seongnam, KOR","2":"Tampico, MEX"},
+{"0":"Dalian, CHN","1":"Aleppo, SYR","2":"Dallas, USA"},
+{"0":"Shanghai, CHN","1":"Buraydah, SAU","2":"Geelong, AUS"},
+{"0":"Brisbane, AUS","1":"Zell am See, AUT","2":"Recife, BRA"},
+{"0":"Hargeysa, SOM","1":"Kismaayo, SOM","2":"Quito, ECU"},
+{"0":"Vientiane, LAO","1":"Copenhagen, DNK","2":"Dubai, ARE"},
+{"0":"Kolkata, IND","1":"Denpasar, IDN","2":"Oranjestad, ABW"},
+{"0":"Jaipur, IND","1":"Lokoja, NGA","2":"Sacramento, USA"},
+{"0":"Sendai, JPN","1":"Paamiut, GRL","2":"Shiraz, IRN"},
+{"0":"Nice, FRA","1":"Lisbon, PRT","2":"Gebze, TUR"},
+{"0":"Samsun, TUR","1":"Baltimore, USA","2":"Chelyabinsk, RUS"},
+{"0":"Foshan, CHN","1":"Ibadan, NGA","2":"Nukuʻalofa, TON"},
+{"0":"Moscow, RUS","1":"Hanoi, VNM","2":"Rostov On Don, RUS"},
+{"0":"Pontianak, IDN","1":"Kisangani, COD","2":"Denpasar, IDN"},
+{"0":"Rome, ITA","1":"Can Tho, VNM","2":"Daejon, KOR"},
+{"0":"Dili, TLS","1":"Luanda, AGO","2":"Chongjin, PRK"},
+{"0":"Maturin, VEN","1":"Port of Spain, TTO","2":"Haerbin, CHN"},
+{"0":"Porto, PRT","1":"Istanbul, TUR","2":"Larkana, PAK"},
+{"0":"San Juan, ARG","1":"Daegu, KOR","2":"Antananarivo, MDG"},
+{"0":"Frankfurt, DEU","1":"Jeonju, KOR","2":"Bogota, COL"},
+{"0":"Zaria, NGA","1":"Matola, MOZ","2":"Ekurhuleni, ZAF"},
+{"0":"Hyderabad, IND","1":"Auckland, NZL","2":"Colombo, LKA"},
+{"0":"Sorocaba, BRA","1":"Perth, AUS","2":"El Paso, USA"},
+{"0":"Guatemala City, GTM","1":"Mecca, SAU","2":"Hanoi, VNM"},
+{"0":"Rajshahi, BGD","1":"Florence, ITA","2":"Eslamshahr, IRN"},
+{"0":"Karaj, IRN","1":"Kollam, IND","2":"Rosario, ARG"},
+{"0":"Majuro, MHL","1":"Buffalo City, ZAF","2":"Yerevan, ARM"},
+{"0":"La Serena Coquimbo, CHL","1":"Hiroshima, JPN","2":"Kitwe, ZMB"},
+{"0":"Mbabane, SWZ","1":"Songkhla, THA","2":"Dubrovnik, HRV"},
+{"0":"Boston, USA","1":"San Juan, PRI","2":"Abomey Calavi, BEN"},
+{"0":"Zanzibar, TZA","1":"Chicago, USA","2":"Sanaa, YEM"},
+{"0":"Houston, USA","1":"Tangerang, IDN","2":"Seattle, USA"},
+{"0":"Raipur, IND","1":"Prague, CZE","2":"Kolkata, IND"},
+{"0":"Basra, IRQ","1":"Madrid, ESP","2":"Bern, CHE"},
+{"0":"Chicago, USA","1":"Bordeaux, FRA","2":"Hamburg, DEU"},
+{"0":"Mombasa, KEN","1":"Warri, NGA","2":"Ashgabat, TKM"},
+{"0":"Samara, RUS","1":"Dnipro, UKR","2":"London, GBR"},
+{"0":"Constanţa, ROU","1":"Nagpur, IND","2":"Toronto, CAN"},
+{"0":"Orumiyeh, IRN","1":"Banjul, GMB","2":"Bangalore, IND"},
+{"0":"Tokyo, JPN","1":"York, GBR","2":"Minsk, BLR"},
+{"0":"Atlanta, USA","1":"Athens, GRC","2":"Milan, ITA"},
+{"0":"Vilnius, LTU","1":"Cabinda, AGO","2":"Mexico City, MEX"},
+{"0":"Okayama, JPN","1":"Esfahan, IRN","2":"Chongqing, CHN"},
+{"0":"Lucknow, IND","1":"Agra, IND","2":"Dublin, IRL"},
+{"0":"Mexicali, MEX","1":"Maracaibo, VEN","2":"Toronto, CAN"},
+{"0":"Nouakchott, MRT","1":"Sulaimaniya, IRQ","2":"Bangkok, THA"},
+{"0":"Strasbourg, FRA","1":"Jos, NGA","2":"Shanghai, CHN"},
+{"0":"Bangkok, THA","1":"Tel Aviv, ISR","2":"Enugu, NGA"},
+{"0":"Duesseldorf, DEU","1":"Heraklion, GRC","2":"Gothenburg, SWE"},
+{"0":"New York City, USA","1":"Chiba, JPN","2":"Bamenda, CMR"},
+{"0":"Washington, USA","1":"Windhoek, NAM","2":"Berbera, SOM"},
+{"0":"Lubango, AGO","1":"Tirana, ALB","2":"Bujumbura, BDI"},
+{"0":"Basel, CHE","1":"Genoa, ITA","2":"Coimbatore, IND"},
+{"0":"Malabo, GNQ","1":"Kazan, RUS","2":"Florianopolis, BRA"},
+{"0":"Budapest, HUN","1":"Helsinki, FIN","2":"Sapporo, JPN"},
+{"0":"Hamadan, IRN","1":"Seville, ESP","2":"Durango, MEX"},
+{"0":"Munich, DEU","1":"Bulawayo, ZWE","2":"Vienna, AUT"},
+{"0":"New York City, USA","1":"Kyoto, JPN","2":"Tianjin, CHN"},
+{"0":"Calamba, PHL","1":"Milan, ITA","2":"Bergamo, ITA"},
+{"0":"Porto Alegre, BRA","1":"Samut Prakan, THA","2":"Pattaya, THA"},
+{"0":"Johannesburg, ZAF","1":"Dubai, ARE","2":"The Hague, NLD"},
+{"0":"Jakarta, IDN","1":"Mendoza, ARG","2":"Dublin, IRL"}]
+
+const placesToday = data[dayNumber];
+console.log(placesToday)
+placeName = placesToday
+console.log(placeName["Round1"])
+
+
+
+    // Get place names for each round and put them into a google URL for model in HTML
+    const place1Plus = placeName["0"].replaceAll(' ', '+');
+    const place2Plus = placeName["1"].replaceAll(' ', '+');
+    const place3Plus = placeName["2"].replaceAll(' ', '+');
+    const place1URL = "https://www.google.com/search?q=" + place1Plus;
+    const place2URL = "https://www.google.com/search?q=" + place2Plus;
+    const place3URL = "https://www.google.com/search?q=" + place3Plus;
+    document.getElementById("place1").innerHTML = placeName["0"];
+    document.getElementById("place2").innerHTML = placeName["1"];
+    document.getElementById("place3").innerHTML = placeName["2"];
+    document.getElementById("place1").setAttribute("href", place1URL);
+    document.getElementById("place2").setAttribute("href", place2URL);
+    document.getElementById("place3").setAttribute("href", place3URL);
+
 
 // Map variables
 //var map, view, graphicsLayer;
@@ -105,7 +422,10 @@ let symbolPlace1, symbolPlace2, symbolPlace3;
 let highScores, dateCheck;
 
 // Setting the intial value of the Navigation button
-document.getElementById("placeRound").innerHTML = "Round 1  of 3: Guess the location of " + placeName[0];
+if (placeName != ""){
+    document.getElementById("placeRound").innerHTML = "Round 1  of 3: Guess the location of " + placeName["0"];
+}
+
 
 disableButton = () => {
     // Disabling the button to be click while on a round
