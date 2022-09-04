@@ -836,7 +836,7 @@ function copyClipboard(){
     } else if (localStorage.getItem('roundScore2') > 4) {
         round2Emoji = ["😊", "😁", "🤠"];;
     } else if (localStorage.getItem('roundScore2') > 1) {
-        round2Emoji = ["😕", "💩", "😲"];;
+        round2Emoji = ["😕", "😊", "😲"];;
     } else if (localStorage.getItem('roundScore2') == 0) {
         round2Emoji = ["🥴", "😶", "😩"];;
     };
